@@ -13,6 +13,5 @@ function NavbarContentPages() {
 }
 
 export {
-
     NavbarContentPages
 };

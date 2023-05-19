@@ -28,18 +28,16 @@ li {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    background-color: white;
+    width: 100%;
 }
-
 .flex-item-page {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin: 10px;
-    /*  border: 4px  #231942; */
+    text-align: 'center';
     border: 2px solid #be95c4;
     background: linear-gradient(to right, #be95c4, #e0b1cb, #be95c4);
-    /*     padding: 0px 5px 0px 5px; */
-    padding: 4px;
+    margin: '15px auto';
     border-radius: 4px;
     width: 400px;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
@@ -106,7 +104,7 @@ a:hover {
 .btn {
     font-size: 20px;
     font-weight: 600;
-    padding: 3px 10px;
+    padding: auto 10px;
     margin-top: 10px;
     border: 2px solid #231942;
     border-radius: 5px;
@@ -114,3 +112,7 @@ a:hover {
     color: white;
 }
 
+.navbar-img {
+    width: 100%;
+    height: 40px;
+}

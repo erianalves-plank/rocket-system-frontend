@@ -76,7 +76,14 @@ const theme = {
         justifyContent: 'center',
         fontSize: '15px',
     },
+    divBtn: {
+        marginTop: 'auto',
+        justifyContent: 'space-around',
+        width: '100%'
+    }
 };
+
+
 
 export default theme;
 
