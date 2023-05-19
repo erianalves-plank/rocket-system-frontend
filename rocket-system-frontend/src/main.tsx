@@ -1,42 +1,37 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-import './index.css';
-import { Crew } from './routes/crew.tsx';
-import { Crewman } from './routes/crewman.tsx';
-import { Launch } from './routes/launch.tsx';
-import { Rocket } from './routes/rocket.tsx';
-import { Root } from './routes/root.tsx';
-import { theme } from './Theme.tsx';
-import { ThemeContext } from './ThemeContext.tsx';
-
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import './index.css'
+import { Crew } from './routes/crew.tsx'
+import { Crewman } from './routes/crewman.tsx'
+import { Launch } from './routes/launch.tsx'
+import { Rocket } from './routes/rocket.tsx'
+import { Root } from './routes/root.tsx'
+import { theme } from './Theme.tsx'
+import { ThemeContext } from './ThemeContext.tsx'
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Root />,
   },
   {
-    path: "rocket",
+    path: 'rocket',
     element: <Rocket />,
   },
   {
-    path: "launch",
+    path: 'launch',
     element: <Launch />,
   },
   {
-    path: "crew",
+    path: 'crew',
     element: <Crew />,
   },
   {
-    path: "crewman",
+    path: 'crewman',
     element: <Crewman />,
   },
-]);
-
+])
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
