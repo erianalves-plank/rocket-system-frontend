@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
-import { ThemeContext } from '../ThemeContext'
+import { ThemeContext } from '../theme/ThemeContext.tsx'
 import { Key, useContext } from 'react'
 import { Header } from '../components/Header'
 import { CardMainPage } from '../components/CardMainPage'
 import { Footer } from '../components/Footer'
-import data from '../dataMainPage.tsx'
+import data from '../mockedData/dataMainPage.tsx'
 
 const Root = () => {
   const cardsMainPage = data.map(item => {

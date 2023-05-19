@@ -1,35 +1,41 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import './index.css'
+import './css/index.css'
 import { Crew } from './routes/crew.tsx'
 import { Crewman } from './routes/crewman.tsx'
 import { Launch } from './routes/launch.tsx'
 import { Rocket } from './routes/rocket.tsx'
 import { Root } from './routes/root.tsx'
-import { theme } from './Theme.tsx'
-import { ThemeContext } from './ThemeContext.tsx'
+import { theme } from './theme/Theme.tsx'
+import { ThemeContext } from './theme/ThemeContext.tsx'
+import ErrorPage from './error-page.tsx'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Root />,
+    errorElement: <ErrorPage />,
   },
   {
     path: 'rocket',
     element: <Rocket />,
+    errorElement: <ErrorPage />,
   },
   {
     path: 'launch',
     element: <Launch />,
+    errorElement: <ErrorPage />,
   },
   {
     path: 'crew',
     element: <Crew />,
+    errorElement: <ErrorPage />,
   },
   {
     path: 'crewman',
     element: <Crewman />,
+    errorElement: <ErrorPage />,
   },
 ])
 

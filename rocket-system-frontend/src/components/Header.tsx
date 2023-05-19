@@ -1,4 +1,4 @@
-import '../index.css'
+import '../css/index.css'
 function Header() {
   return (
     <header id="hero">

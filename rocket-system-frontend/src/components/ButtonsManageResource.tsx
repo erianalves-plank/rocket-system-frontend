@@ -1,8 +1,9 @@
 import { useContext, useState } from 'react'
-import '../index.css'
-import '../Page.css'
+import '../css/index.css'
+import '../css/Page.css'
 import { Button, Modal } from 'antd'
-import { ThemeContext } from '../ThemeContext'
+import { ThemeContext } from '../theme/ThemeContext'
+import { CustomForm } from './Form'
 
 function ButtonsMangaResource() {
   const theme = useContext(ThemeContext)
@@ -46,14 +47,13 @@ function ButtonsMangaResource() {
         Delete
       </Button>
       <Modal
-        title="Basic Modal"
+        title="Register New Rocket"
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
+        style={{textAlign: 'center'}}
       >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+        <CustomForm />
       </Modal>
     </div>
   )

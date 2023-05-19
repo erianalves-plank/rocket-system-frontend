@@ -1,5 +1,5 @@
 import { Button, Card } from 'antd'
-import '../Page.css'
+import '../css/Page.css'
 import { NavbarContentPages } from '../components/NavbarContentPages'
 import { Link } from 'react-router-dom'
 import { Layout, Menu } from 'antd'

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import '../index.css'
+import '../css/index.css'
 
 export interface DataMainPage {
   id: number

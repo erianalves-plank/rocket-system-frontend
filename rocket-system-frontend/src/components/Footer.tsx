@@ -1,6 +1,6 @@
 import { useContext } from 'react'
-import '../index.css'
-import { ThemeContext } from '../ThemeContext'
+import '../css/index.css'
+import { ThemeContext } from '../theme/ThemeContext'
 function Footer() {
   const theme = useContext(ThemeContext)
 

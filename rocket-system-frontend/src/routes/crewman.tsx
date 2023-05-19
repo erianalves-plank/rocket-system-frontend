@@ -1,5 +1,5 @@
 import { Button } from 'antd'
-import '../Page.css'
+import '../css/Page.css'
 import { ButtonsMangaResource } from '../components/ButtonsManageResource'
 import { Footer } from '../components/Footer'
 import { NavbarContentPages } from '../components/NavbarContentPages'
