@@ -1,5 +1,3 @@
-import { Button } from 'antd'
-import '../css/Page.css'
 import { ButtonsManageResource } from '../components/ButtonsManageResource'
 import { Footer } from '../components/Footer'
 import { NavbarContentPages } from '../components/NavbarContentPages'
@@ -16,9 +14,9 @@ const Crewman = () => {
       style={theme.layoutContentPage as React.CSSProperties}
     >
       <NavbarContentPages />
-      <main className="container-rocket-page" style={{ flex: 1 }}>
+      <main style={theme.containerContentPage as React.CSSProperties}>
 
-        <div id="rocket-div">
+        <div style={theme.divContent as React.CSSProperties}>
           <CardContentCrewman />
           <CardContentCrewman />
           <CardContentCrewman />

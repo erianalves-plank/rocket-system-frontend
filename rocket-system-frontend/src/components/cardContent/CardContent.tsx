@@ -1,16 +1,19 @@
-import '../../css/index.css'
+import React, { useContext } from 'react'
+import { ThemeContext } from '../../theme/ThemeContext';
 
 interface DataRocket {
   id: number
   name: string
 }
 const CardContent: React.FC<DataRocket> = ({ name }) => {
+  const theme = useContext(ThemeContext);
+
   return (
-    <div className="flex-item-page">
+    <div style={theme.flexItemCrew as React.CSSProperties}>
       <div>
-        <h3 className="div-title">Details</h3>
+        <h3 style={theme.flexItemTitle}>Details</h3>
       </div>
-      <div className="flex-item-content">
+      <div>
         <p>Name: {name}</p>
       </div>
     </div>

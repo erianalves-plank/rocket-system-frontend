@@ -22,9 +22,9 @@ function Crew() {
     >
       <NavbarContentPages />
 
-      <main className="container-rocket-page" style={{ flex: 1 }}>
+      <main style={theme.containerContentPage as React.CSSProperties}>
         
-        <div id="rocket-div">
+        <div style={theme.divContent as React.CSSProperties}>
           {cardsCrew}
         </div>
 

@@ -2,9 +2,8 @@ import { ButtonsManageResource } from '../components/ButtonsManageResource'
 import { Footer } from '../components/Footer'
 import { NavbarContentPages } from '../components/NavbarContentPages'
 import { CardContentLaunch } from '../components/cardContent/CardContentLaunch'
-import '../css/Page.css'
 import { ThemeContext } from '../theme/ThemeContext.tsx'
-import { useContext } from 'react'
+import React, { useContext } from 'react'
 import GetLaunchs from '../mockedData/dataLaunch.tsx'
 
 const Launch = () => {
@@ -20,9 +19,9 @@ const Launch = () => {
       style={theme.layoutContentPage as React.CSSProperties}
     >
       <NavbarContentPages />
-      <main className="container-rocket-page" style={{ flex: 1 }}>
+      <main style={theme.containerContentPage as React.CSSProperties} >
 
-        <div id="rocket-div">
+        <div style={theme.divContent as React.CSSProperties}>
           {cardsLaunch}
         </div>
         <ButtonsManageResource />

@@ -19,16 +19,20 @@ const theme = {
     flexDirection: 'column' as const,
     justifyContent: 'space-evenly',
   },
-  layoutContentPage: { 
-    minHeight: '100vh', 
-    display: 'flex', 
-    flexDirection: 'column' 
+  layoutContentPage: {
+    minHeight: '100vh',
+    display: 'flex',
+    flexDirection: 'column'
   },
   navbar: {
     listStyle: 'none',
     display: 'flex',
     justifyContent: 'space-evenly',
     fontSize: '20px',
+  },
+  imgFrontPage: {
+    width: '100px',
+    height: 'auto',
   },
   hero: {
     background: "url('../imgs/space-with-rocket.jpg')",
@@ -57,6 +61,21 @@ const theme = {
     margin: '5px 1px',
     flexWrap: 'wrap',
     textAlign: 'center',
+  },
+  containerContentPage: {
+    fontSize: '20px',
+    background: 'linear-gradient(#9f86c0, #e0b1cb)',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    margin: '5px 1px',
+    textAlign: 'start',
+  },
+  divContent: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-evenly',
+    width: '100%',
   },
   flexItem: {
     display: 'flex',
@@ -108,6 +127,17 @@ const theme = {
     justifyContent: 'space-around',
     width: '100%',
   },
+  btn: {
+    fontSize: '16px',
+    fontWeight: '600',
+    padding: 'auto 10px',
+    border: '2px solid #231942',
+    borderRadius: '5px',
+    background: '#e0b1cb',
+    color: 'white',
+    margin: 'auto 15px',
+    width: '100px'
+  }
 }
 
 export default theme

@@ -1,6 +1,4 @@
 import { useContext, useState } from 'react'
-import '../css/index.css'
-import '../css/Page.css'
 import { Button, Modal } from 'antd'
 import { ThemeContext } from '../theme/ThemeContext'
 import { CustomForm } from './Form'
@@ -24,25 +22,23 @@ function ButtonsManageResource() {
   return (
     <div style={style}>
       <Button
-        className="btn"
+        style={theme.btn}
         size="large"
-        style={{ margin: 'auto 15px', width: '100px' }}
         onClick={showModal}
       >
         Add
       </Button>
       <Button
-        className="btn"
+        style={theme.btn}
         size="large"
-        style={{ margin: 'auto 15px', width: '100px' }}
       >
         Edit
       </Button>
       <Button
-        className="btn"
+        style={theme.btn}
+
         size="large"
         danger
-        style={{ margin: 'auto 15px', width: '100px' }}
       >
         Delete
       </Button>
@@ -51,7 +47,7 @@ function ButtonsManageResource() {
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
-        style={{textAlign: 'center'}}
+        style={{ textAlign: 'center' }}
       >
         <CustomForm />
       </Modal>
