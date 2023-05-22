@@ -5,7 +5,7 @@ import { Button, Modal } from 'antd'
 import { ThemeContext } from '../theme/ThemeContext'
 import { CustomForm } from './Form'
 
-function ButtonsMangaResource() {
+function ButtonsManageResource() {
   const theme = useContext(ThemeContext)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const showModal = () => {
@@ -59,4 +59,4 @@ function ButtonsMangaResource() {
   )
 }
 
-export { ButtonsMangaResource }
+export { ButtonsManageResource }

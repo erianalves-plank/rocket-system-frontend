@@ -1,17 +1,40 @@
-const CardContentLaunch = () => {
+import { ThemeContext } from '../../theme/ThemeContext.tsx'
+import { useContext } from 'react'
+
+interface DataCrew {
+  name: string
+  crewmen: object[]
+}
+
+interface DataLaunch {
+  launchCode: string
+  date: string
+  success: boolean
+  rocket: string
+  crew: DataCrew
+}
+
+
+const CardContentLaunch: React.FC<DataLaunch> = ({ launchCode, date, success, rocket, crew }) => {
+  const theme = useContext(ThemeContext);
+
+/*   const crewmenSection = crew.crewmen.map(item => {
+    const crewmanInfo = <>
+      <p style={{ margin: 0, paddingLeft: '30px' }}>
+        <strong>Name:</strong> {item.name}
+      </p>
+      <p style={{ margin: '0 0 15px 0', paddingLeft: '30px' }}>
+        <strong>Patent:</strong> {item.patent}
+      </p>
+    </>
+
+    return crewmanInfo;
+  })
+ */
+  const infoSuccess = success ? 'True' : 'False';
   return (
     <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        textAlign: 'center',
-        border: '2px solid #be95c4',
-        width: '400px',
-        margin: '15px auto',
-        borderRadius: '4px',
-        boxShadow: '2px 2px 4px rgba(0, 0, 0, 0.2)',
-        background: 'linear-gradient(to right, #be95c4, #e0b1cb, #be95c4)',
-      }}
+      style={theme.flexItemCrew as React.CSSProperties}
     >
       <h3
         style={{
@@ -24,13 +47,13 @@ const CardContentLaunch = () => {
       </h3>
       <div>
         <p style={{ margin: 0, paddingLeft: '4px' }}>
-          <strong>Launch Code:</strong> BBC001
+          <strong>Launch Code:</strong> {launchCode}
         </p>
         <p style={{ margin: 0, paddingLeft: '4px' }}>
-          <strong>Date:</strong> 02/01/1999
+          <strong>Date:</strong> {date}
         </p>
         <p style={{ margin: 0, paddingLeft: '4px' }}>
-          <strong>Success:</strong> true
+          <strong>Success:</strong> {infoSuccess}
         </p>
       </div>
       <div>
@@ -39,7 +62,7 @@ const CardContentLaunch = () => {
         </h4>
         <div>
           <p style={{ margin: 0, paddingLeft: '4px' }}>
-            <strong>Name:</strong> Kraskovich
+            <strong>Name:</strong> {rocket}
           </p>
         </div>
         <h4
@@ -48,23 +71,17 @@ const CardContentLaunch = () => {
           Crew
         </h4>
         <div>
+          
           <p style={{ margin: '0 0 10px 0', paddingLeft: '4px' }}>
-            <strong>Name:</strong> Shalashaska
+            <strong>Name:</strong> {crew.name}
           </p>
+
+{/*           <p style={{ marginTop: '5px', marginBottom: '2px', paddingLeft: '4px' }}>Crewmen</p>
+
           <div>
-            <p style={{ margin: 0, paddingLeft: '30px' }}>
-              <strong>Name:</strong> Ashley
-            </p>
-            <p style={{ margin: '0 0 15px 0', paddingLeft: '30px' }}>
-              <strong>Patent:</strong> Vice-Captain
-            </p>
-            <p style={{ margin: 0, paddingLeft: '30px' }}>
-              <strong>Name:</strong> Mash
-            </p>
-            <p style={{ margin: '0 0 15px 0', paddingLeft: '30px' }}>
-              <strong>Patent:</strong> Biologist
-            </p>
-          </div>
+            {crewmenSection}
+          </div> */}
+
         </div>
       </div>
     </div>

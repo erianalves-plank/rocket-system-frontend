@@ -19,6 +19,11 @@ const theme = {
     flexDirection: 'column' as const,
     justifyContent: 'space-evenly',
   },
+  layoutContentPage: { 
+    minHeight: '100vh', 
+    display: 'flex', 
+    flexDirection: 'column' 
+  },
   navbar: {
     listStyle: 'none',
     display: 'flex',
@@ -63,6 +68,28 @@ const theme = {
     background: 'linear-gradient(to right, #9f86c0, #e0b1cb, #9f86c0)',
     padding: '0px 5px',
     borderRadius: '4px',
+    boxShadow: '2px 2px 4px rgba(0, 0, 0, 0.2)',
+  },
+  flexItemCrew: {
+    display: 'flex',
+    flexDirection: 'column',
+    textAlign: 'center',
+    border: '2px solid #be95c4',
+    width: '400px',
+    margin: '15px auto',
+    borderRadius: '4px',
+    boxShadow: '2px 2px 4px rgba(0, 0, 0, 0.2)',
+    background: 'linear-gradient(to right, #be95c4, #e0b1cb, #be95c4)',
+  },
+  flexItemTitle: {
+    marginTop: '2px',
+    marginBottom: 0,
+    borderBottom: '4px solid #5e60ce',
+  },
+  flexItemSub_Title: {
+    marginTop: 0,
+    marginBottom: '2px',
+    paddingLeft: '4px',
   },
   paragraph: {
     maxWidth: '300px',

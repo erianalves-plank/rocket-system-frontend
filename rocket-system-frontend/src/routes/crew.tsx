@@ -1,27 +1,39 @@
 import { Button } from 'antd'
 import '../css/Page.css'
-import { ButtonsMangaResource } from '../components/ButtonsManageResource'
+import { ButtonsManageResource } from '../components/ButtonsManageResource'
 import { Footer } from '../components/Footer'
 import { NavbarContentPages } from '../components/NavbarContentPages'
 import { CardContentCrew } from '../components/cardContent/CardContentCrew'
+import GetCrews from '../mockedData/dataCrew.tsx'
+import { ThemeContext } from '../theme/ThemeContext.tsx'
+import { useContext } from 'react'
 
 function Crew() {
+
+  const theme = useContext(ThemeContext);
+
+  const cardsCrew = GetCrews().map(item => {
+    return <CardContentCrew key={item.id} id={item.id} name={item.name} crewmen={item.crewmen} />
+  })
+
   return (
     <div
-      style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}
+      style={theme.layoutContentPage as React.CSSProperties}
     >
       <NavbarContentPages />
-      <main className="container-rocket-page" style={{ flex: 1 }}>
-        <Button className="btn" size="large" style={{ width: '200px' }}>
-          Get Resource
-        </Button>
 
+      <main className="container-rocket-page" style={{ flex: 1 }}>
+        
         <div id="rocket-div">
-          <CardContentCrew />
+          {cardsCrew}
         </div>
-        <ButtonsMangaResource />
+
+        <ButtonsManageResource />
+
       </main>
+
       <Footer />
+
     </div>
   )
 }

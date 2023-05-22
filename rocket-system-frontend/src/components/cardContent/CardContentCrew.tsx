@@ -1,61 +1,52 @@
-const CardContentCrew = () => {
+import { ThemeContext } from "../../theme/ThemeContext"
+import { useContext } from 'react'
+
+interface DataCrew {
+  id: string
+  name: string
+  crewmen: object[]
+}
+
+const CardContentCrew: React.FC<DataCrew> = ({ name, crewmen }) => {
+
+
+  const theme = useContext(ThemeContext)
+
+  const crewmenSection = crewmen.map(item => {
+    const crewmanInfo = <>
+      <p style={{ margin: 0, paddingLeft: '4px' }}>
+        <strong>Name:</strong> {item.name}
+      </p>
+      <p style={{ margin: '0 0 15px 0', paddingLeft: '4px' }}>
+        <strong>Patent:</strong> {item.patent}
+      </p>
+    </>
+
+    return crewmanInfo;
+  })
+
+
   return (
     <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        textAlign: 'center',
-        border: '2px solid #be95c4',
-        width: '400px',
-        margin: '15px auto',
-        borderRadius: '4px',
-        boxShadow: '2px 2px 4px rgba(0, 0, 0, 0.2)',
-        background: 'linear-gradient(to right, #be95c4, #e0b1cb, #be95c4)',
-      }}
+      style={theme.flexItemCrew}
     >
       <h3
-        style={{
-          marginTop: '2px',
-          marginBottom: 0,
-          borderBottom: '4px solid #5e60ce',
-        }}
+        style={theme.flexItemTitle}
       >
         Details
       </h3>
       <div>
         <p style={{ margin: 0, paddingLeft: '4px' }}>
-          <strong>Name:</strong> Scorpio VII
+          <strong>Name:</strong> {name}
         </p>
       </div>
       <div>
-        <h4 style={{ marginTop: 0, marginBottom: '4px', paddingLeft: '4px' }}>
+        <h4 style={theme.flexItemSub_Title}>
           Crewmen
         </h4>
+
         <div>
-          <p style={{ margin: 0, paddingLeft: '4px' }}>
-            <strong>Name:</strong> Ashley
-          </p>
-          <p style={{ margin: '0 0 15px 0', paddingLeft: '4px' }}>
-            <strong>Patent:</strong> Vice-Captain
-          </p>
-          <p style={{ margin: 0, paddingLeft: '4px' }}>
-            <strong>Name:</strong> Mash
-          </p>
-          <p style={{ margin: '0 0 15px 0', paddingLeft: '4px' }}>
-            <strong>Patent:</strong> Biologist
-          </p>
-          <p style={{ margin: 0, paddingLeft: '4px' }}>
-            <strong>Name:</strong> Cris
-          </p>
-          <p style={{ margin: '0 0 15px 0', paddingLeft: '4px' }}>
-            <strong>Patent:</strong> Chemist
-          </p>
-          <p style={{ margin: 0, paddingLeft: '4px' }}>
-            <strong>Name:</strong> Alexandria
-          </p>
-          <p style={{ margin: 0, paddingLeft: '4px' }}>
-            <strong>Patent:</strong> Physist
-          </p>
+          {crewmenSection}
         </div>
       </div>
     </div>

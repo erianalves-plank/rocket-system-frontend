@@ -13,7 +13,6 @@ li {
     font-size: 30px;
 }
 
-
 .container-rocket-page {
     font-size: 20px;
     background: linear-gradient(#9f86c0, #e0b1cb);
@@ -28,7 +27,6 @@ li {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    background-color: white;
     width: 100%;
 }
 .flex-item-page {
@@ -41,6 +39,7 @@ li {
     border-radius: 4px;
     width: 400px;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    margin: 5px;
 
 }
 
