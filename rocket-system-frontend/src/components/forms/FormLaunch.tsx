@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Checkbox, Form, Input } from 'antd';
+import { Button, Form, Input } from 'antd';
 
 const onFinish = (values: any) => {
   console.log('Success:', values);
@@ -9,7 +9,7 @@ const onFinishFailed = (errorInfo: any) => {
   console.log('Failed:', errorInfo);
 };
 
-const CustomForm: React.FC = () => (
+const FormLaunch: React.FC = () => (
   <Form
     name="basic"
     labelCol={{ span: 4 }}
@@ -22,7 +22,21 @@ const CustomForm: React.FC = () => (
     <Form.Item
       label="Name"
       name="name"
-      rules={[{ required: true, message: 'Please input the rocket name!' }]}
+      rules={[{ required: true, message: 'Please input the Launch name!' }]}
+    >
+      <Input />
+    </Form.Item>
+    <Form.Item
+      label="Rocket"
+      name="rocket"
+      rules={[{ required: true, message: 'Please input the rocket for the launch!' }]}
+    >
+      <Input />
+    </Form.Item>
+    <Form.Item
+      label="Crew"
+      name="crew"
+      rules={[{ required: false, message: 'Please input the crew for the launch!' }]}
     >
       <Input />
     </Form.Item>
@@ -36,5 +50,5 @@ const CustomForm: React.FC = () => (
 );
 
 export {
-    CustomForm
+    FormLaunch
 };

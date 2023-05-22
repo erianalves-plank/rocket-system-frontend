@@ -10,9 +10,8 @@ const CardContent: React.FC<DataRocket> = ({ name }) => {
 
   return (
     <div style={theme.flexItemCrew as React.CSSProperties}>
-      <div>
+
         <h3 style={theme.flexItemTitle}>Details</h3>
-      </div>
       <div>
         <p>Name: {name}</p>
       </div>

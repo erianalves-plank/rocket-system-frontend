@@ -20,7 +20,7 @@ function Crew() {
     <div
       style={theme.layoutContentPage as React.CSSProperties}
     >
-      <NavbarContentPages />
+      <NavbarContentPages entityType='crew'/>
 
       <main style={theme.containerContentPage as React.CSSProperties}>
         
@@ -28,7 +28,7 @@ function Crew() {
           {cardsCrew}
         </div>
 
-        <ButtonsManageResource />
+        <ButtonsManageResource entityType='crew'/>
 
       </main>
 

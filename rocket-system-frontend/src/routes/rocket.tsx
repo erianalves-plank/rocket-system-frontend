@@ -18,7 +18,7 @@ const Rocket = () => {
     <div
       style={theme.layoutContentPage as React.CSSProperties}
     >
-      <NavbarContentPages />
+      <NavbarContentPages entityType='rocket' />
 
       <main style={theme.containerContentPage as React.CSSProperties}>
 
@@ -26,7 +26,7 @@ const Rocket = () => {
           {cardsRocket}
         </div>
 
-        <ButtonsManageResource />
+        <ButtonsManageResource entityType={'rocket'}/>
 
       </main>
       <Footer />

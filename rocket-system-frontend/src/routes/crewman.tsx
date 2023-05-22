@@ -13,7 +13,7 @@ const Crewman = () => {
     <div
       style={theme.layoutContentPage as React.CSSProperties}
     >
-      <NavbarContentPages />
+      <NavbarContentPages entityType='crewman'/>
       <main style={theme.containerContentPage as React.CSSProperties}>
 
         <div style={theme.divContent as React.CSSProperties}>
@@ -21,7 +21,7 @@ const Crewman = () => {
           <CardContentCrewman />
           <CardContentCrewman />
         </div>
-        <ButtonsManageResource />
+        <ButtonsManageResource entityType='crewman' />
       </main>
       <Footer />
     </div>

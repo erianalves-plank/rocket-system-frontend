@@ -7,7 +7,6 @@ const Header = () => {
 
   return (
     <header style={theme.hero as React.CSSProperties}>
-      <h2>Northeast Newest Station</h2>
     </header>
   )
 }

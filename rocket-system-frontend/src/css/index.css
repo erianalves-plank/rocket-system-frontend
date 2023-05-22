@@ -11,7 +11,7 @@ body,
     min-height: 100vh;
 }
 
-nav {
+/* nav {
     background: #5e548e;
     display: flex;
     justify-content: space-evenly;
@@ -22,7 +22,7 @@ li {
     display: inline-block;
     padding: 0 30px;
     font-size: 20px;
-}
+} */
 
 #hero {
     background: url('../imgs/space-with-rocket.jpg');
