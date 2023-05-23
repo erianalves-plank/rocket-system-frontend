@@ -1,6 +1,13 @@
 import React, { useContext } from 'react'
 import { ThemeContext } from '../../theme/ThemeContext';
- 
+
+export interface DataCrewman {
+  id: string
+  name: string
+  patent: string
+}
+
+
 const CardContentCrewman = () => {
 
   const theme = useContext(ThemeContext);

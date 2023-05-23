@@ -1,38 +1,38 @@
 export default [
   {
-    id: 1,
+    id: '1',
     name: 'Cassandra',
   },
   {
-    id: 2,
+    id: '2',
     name: 'Kris',
   },
   {
-    id: 3,
+    id: '3',
     name: 'Ashon',
   },
   {
-    id: 4,
+    id: '4',
     name: 'Litan',
   },
   {
-    id: 5,
+    id: '5',
     name: 'Haspairo',
   },
   {
-    id: 6,
+    id: '6',
     name: 'Shapiro',
   },
   {
-    id: 7,
+    id: '7',
     name: 'Jimbei',
   },
   {
-    id: 8,
+    id: '8',
     name: 'Cristal',
   },
   {
-    id: 9,
+    id: '9',
     name: 'Clementine',
   },
 ]

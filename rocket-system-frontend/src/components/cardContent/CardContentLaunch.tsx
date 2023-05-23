@@ -1,12 +1,10 @@
 import { ThemeContext } from '../../theme/ThemeContext.tsx'
 import { useContext } from 'react'
+import { DataCrew } from './CardContentCrew.tsx'
 
-interface DataCrew {
-  name: string
-  crewmen: object[]
-}
 
-interface DataLaunch {
+export interface DataLaunch {
+  id: string
   launchCode: string
   date: string
   success: boolean

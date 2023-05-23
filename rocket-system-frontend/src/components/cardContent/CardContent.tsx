@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
 import { ThemeContext } from '../../theme/ThemeContext';
 
-interface DataRocket {
-  id: number
+export interface DataRocket {
+  id: string
   name: string
 }
 const CardContent: React.FC<DataRocket> = ({ name }) => {

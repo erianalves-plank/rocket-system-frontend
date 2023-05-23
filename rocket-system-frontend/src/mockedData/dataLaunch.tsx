@@ -11,7 +11,14 @@ export default function GetLaunchs() {
             },
             crew: {
                 id: "4dca6810-524d-4f15-957c-b29485dda84c",
-                name: "Studying the Moon"
+                name: "Studying the Moon",
+                crewmen: [
+                    {
+                        id: '3',
+                        name: 'Joshua',
+                        patent: 'Biologist'
+                    },
+                ]
             }
         },
         {
@@ -25,7 +32,14 @@ export default function GetLaunchs() {
             },
             crew: {
                 id: "8654c293-a5b5-4148-86b8-f979e4055144",
-                name: "New Moon"
+                name: "New Moon",
+                crewmen: [
+                    {
+                        id: '3',
+                        name: 'Joshua',
+                        patent: 'Biologist'
+                    },
+                ]
             }
         }
     ]
