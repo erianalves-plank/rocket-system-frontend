@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
 import { Button, Form, Input } from 'antd';
-import { DataRocket } from '../cardContent/CardContent';
+import React, { useEffect } from 'react';
+import { RocketDTO } from '../../dtos/RocketDTO';
 
-type ModalFormRocket = {
-  data: DataRocket;
+type RocketFormData = {
+  rocket?: RocketDTO;
 }
 
-const onFinish = (values: any) => {
+const onFinish = (values: Partial<RocketDTO>) => {
   console.log('Success:', values);
 };
 
@@ -14,18 +14,27 @@ const onFinishFailed = (errorInfo: any) => {
   console.log('Failed:', errorInfo);
 };
 
-const FormRocket: React.FC<ModalFormRocket> = ({ data }) => {
-  const [rocket, setRocket] = useState<DataRocket | undefined>(data ?? undefined);
-  const [initialValuesForm, setInitialValuesForm] = useState(rocket ?? {});
+const FormRocket: React.FC<RocketFormData> = ({ rocket }) => {
+
+  const [form] = Form.useForm();
 
   useEffect(() => {
-    setRocket(data);
-    setInitialValuesForm(rocket ?? {});
-  }, [data, rocket]);
+    /*     const fieldValues = rocket ? rocket : {};
+        console.log('let me ', fieldValues);
+        form.setFieldsValue(fieldValues); */
 
-  console.log('Maybe ', initialValuesForm);
+    if (rocket)
+      form.setFieldsValue(rocket);
+    else
+      form.resetFields();
+
+
+  }, [rocket, form]);
+  /* console.log(rocket, ' / ', form.getFieldsValue()); */
+
   return (
     <Form
+      form={form}
       name="basic"
       labelCol={{ span: 4 }}
       wrapperCol={{ span: 16 }}
@@ -33,7 +42,6 @@ const FormRocket: React.FC<ModalFormRocket> = ({ data }) => {
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
       autoComplete="off"
-      initialValues={initialValuesForm}
     >
       <Form.Item
         label="Name"

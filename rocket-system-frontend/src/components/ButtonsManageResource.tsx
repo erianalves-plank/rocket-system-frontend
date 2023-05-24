@@ -1,29 +1,15 @@
-import { useContext, useState } from 'react'
-import { Button, Modal } from 'antd'
-import { ThemeContext } from '../theme/ThemeContext'
-import { FormRocket } from './forms/FormRocket'
-import { FormCrewman } from './forms/FormCrewman';
-import { FormLaunch } from './forms/FormLaunch';
-import { FormCrew } from './forms/FormCrew';
-import { DataRocket } from './cardContent/CardContent';
-import { DataCrew } from './cardContent/CardContentCrew';
-import { DataLaunch } from './cardContent/CardContentLaunch';
-import { DataCrewman } from './cardContent/CardContentCrewman';
+import { Button } from 'antd';
+import { useContext } from 'react';
+import { ThemeContext } from '../theme/ThemeContext';
 
 interface ChildComponentProps {
   handleClick: (operation: string) => void;
+  handleClickDelete: () => void;
 }
 
-
-const ButtonsManageResource: React.FC<ChildComponentProps> = ({handleClick}) => {
-
-   const [modalData, setModalData] = useState<DataRocket | DataCrew>(); 
-
-
+const ButtonsManageResource: React.FC<ChildComponentProps> = ({handleClick, handleClickDelete}) => {
   const theme = useContext(ThemeContext)
 
- 
-  
   const style = {
     marginTop: theme.divBtn.marginTop,
   }
@@ -34,9 +20,13 @@ const ButtonsManageResource: React.FC<ChildComponentProps> = ({handleClick}) => 
   const handleClickEditButton = () => {
     handleClick('Edit');
   }
+  const handleClickDeleteButton = () => {
+    console.log(handleClickDelete());
+  }
   
   return (
     <div style={style}>
+
       <Button
         style={theme.btn}
         size="large"
@@ -44,16 +34,18 @@ const ButtonsManageResource: React.FC<ChildComponentProps> = ({handleClick}) => 
         >
         Add
       </Button>
+
       <Button
         style={theme.btn}
         size="large"
         onClick={handleClickEditButton} >
         Edit
       </Button>
+
       <Button
         style={theme.btn}
-        
         size="large"
+        onClick={handleClickDeleteButton}
         danger >
         Delete
       </Button>
@@ -62,4 +54,5 @@ const ButtonsManageResource: React.FC<ChildComponentProps> = ({handleClick}) => 
   )
 }
 
-export { ButtonsManageResource }
+export { ButtonsManageResource };
+
