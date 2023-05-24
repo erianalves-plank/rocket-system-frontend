@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useRef, useState } from 'react'
 import { ButtonsManageResource } from '../components/ButtonsManageResource'
 import { Footer } from '../components/Footer'
 import { NavbarContentPages } from '../components/NavbarContentPages'
@@ -6,21 +6,27 @@ import { CardContent } from '../components/cardContent/CardContent.tsx'
 import { ThemeContext } from '../theme/ThemeContext.tsx'
 
 import data from '../mockedData/dataRocketPage.tsx'
-import { Modal } from 'antd'
+import { Form, Modal } from 'antd'
 import { FormRocket } from '../components/forms/FormRocket.tsx'
 import { RocketDTO } from '../dtos/RocketDTO.tsx'
 
 const Rocket = () => {
   const theme = useContext(ThemeContext)
-
+  
+  /* const formRef = useRef<typeof Form>(null); */
+  
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [modalTitle, setModalTitle] = useState('');
   const [sendDataForm, setSendDataForm] = useState(false);
   const [rocketSelected, setRocketSelected] = useState('');
-  
-  const [formData, setFormData] = useState<RocketDTO>({id: '123', name: 'Agostinho'});
+
+  const [formData, setFormData] = useState<RocketDTO>();
 
   const handleOpenModal = (operation: string) => {
+
+    if (operation === 'Edit' && rocketSelected === '')
+      return;
+
     setModalTitle(`${operation} a Rocket`);
     setSendDataForm(() => {
       return operation === 'Edit' ? true : false;
@@ -33,12 +39,15 @@ const Rocket = () => {
   }
 
   const handleCancel = () => {
+    setRocketSelected('');
+    /* formRef.current?.resetFields(); */
     setIsModalOpen(false);
   }
 
-  const handleCardClick = (id: string) => {
-    setRocketSelected(id);
-    console.log(`Card with ID ${id} clicked`);
+  const handleCardClick = (rocket: RocketDTO) => {
+    setRocketSelected(rocket.id);
+    setFormData(rocket);
+    console.log(`Card with ID ${rocket.id} clicked`);
   };
 
   const handleDeleteRocket = () => {
@@ -46,10 +55,10 @@ const Rocket = () => {
     setRocketSelected('');
     return rocketId;
   }
-  
+
 
   const cardsRocket = data.map(item => {
-    return <CardContent key={item.id} id={item.id} name={item.name} onClick={() => handleCardClick(item.id)}/>
+    return <CardContent key={item.id} id={item.id} name={item.name} onClick={() => handleCardClick(item)} />
   })
 
   return (
@@ -72,8 +81,7 @@ const Rocket = () => {
           onCancel={handleCancel}
           style={{ textAlign: 'center' }} >
 
-          {/* <FormRocket {sendDataForm && rocket={formData}} /> */}
-          {sendDataForm ? <FormRocket rocket={formData}/> : <FormRocket/>}
+          {sendDataForm ? <FormRocket /* formRef={formRef} */ rocket={formData} /> : <FormRocket  /* formRef={formRef} */ />}
         </Modal>
 
       </main>

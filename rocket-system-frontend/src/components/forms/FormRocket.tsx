@@ -4,6 +4,7 @@ import { RocketDTO } from '../../dtos/RocketDTO';
 
 type RocketFormData = {
   rocket?: RocketDTO;
+  /* formRef: React.RefObject<typeof Form>; */
 }
 
 const onFinish = (values: Partial<RocketDTO>) => {
@@ -42,6 +43,7 @@ const FormRocket: React.FC<RocketFormData> = ({ rocket }) => {
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
       autoComplete="off"
+      /* ref={formRef} */
     >
       <Form.Item
         label="Name"
