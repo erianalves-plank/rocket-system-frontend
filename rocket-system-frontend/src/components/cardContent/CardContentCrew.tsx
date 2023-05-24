@@ -1,18 +1,24 @@
 
-import { ThemeContext } from "../../theme/ThemeContext"
 import React, { useContext } from 'react'
-import { DataCrewman } from "./CardContentCrewman"
+import { CrewmanDTO } from "../../dtos/CrewmanDTO"
+import { ThemeContext } from "../../theme/ThemeContext"
 
 export interface DataCrew {
   id: string
   name: string
-  crewmen: DataCrewman[]
+  crewmen: CrewmanDTO[]
+  onClick: () => void
 }
 
-const CardContentCrew: React.FC<DataCrew> = ({ name, crewmen }) => {
+const CardContentCrew: React.FC<DataCrew> = ({ name, crewmen, onClick }) => {
 
 
   const theme = useContext(ThemeContext)
+
+
+  const handleClick = () => {
+    onClick();
+  }
 
   const crewmenSection = crewmen.map(item => {
     const crewmanInfo =
@@ -30,9 +36,7 @@ const CardContentCrew: React.FC<DataCrew> = ({ name, crewmen }) => {
 
 
   return (
-    <div
-      style={theme.flexItemCrew as React.CSSProperties}
-    >
+    <div style={theme.flexItemCrew as React.CSSProperties} onClick={handleClick}>
       <h3
         style={theme.flexItemTitle}
       >

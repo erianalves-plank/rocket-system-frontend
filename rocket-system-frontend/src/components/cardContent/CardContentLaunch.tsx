@@ -1,6 +1,7 @@
-import { ThemeContext } from '../../theme/ThemeContext.tsx'
 import { useContext } from 'react'
-import { DataCrew } from './CardContentCrew.tsx'
+import { CrewDTO } from '../../dtos/CrewDTO.tsx'
+import { RocketDTO } from '../../dtos/RocketDTO.tsx'
+import { ThemeContext } from '../../theme/ThemeContext.tsx'
 
 
 export interface DataLaunch {
@@ -8,12 +9,13 @@ export interface DataLaunch {
   launchCode: string
   date: string
   success: boolean
-  rocket: string
-  crew: DataCrew
+  rocket: RocketDTO
+  crew: CrewDTO
+  onClick: () => void
 }
 
 
-const CardContentLaunch: React.FC<DataLaunch> = ({ launchCode, date, success, rocket, crew }) => {
+const CardContentLaunch: React.FC<DataLaunch> = ({ launchCode, date, success, rocket, crew, onClick }) => {
   const theme = useContext(ThemeContext);
 
 /*   const crewmenSection = crew.crewmen.map(item => {
@@ -29,11 +31,13 @@ const CardContentLaunch: React.FC<DataLaunch> = ({ launchCode, date, success, ro
     return crewmanInfo;
   })
  */
+
+  const handleClick = () => {
+    onClick();
+  };
   const infoSuccess = success ? 'True' : 'False';
   return (
-    <div
-      style={theme.flexItemCrew as React.CSSProperties}
-    >
+    <div style={theme.flexItemCrew as React.CSSProperties} onClick={handleClick} >
       <h3
         style={{
           marginTop: '2px',
@@ -60,7 +64,7 @@ const CardContentLaunch: React.FC<DataLaunch> = ({ launchCode, date, success, ro
         </h4>
         <div>
           <p style={{ margin: 0, paddingLeft: '4px' }}>
-            <strong>Name:</strong> {rocket}
+            <strong>Name:</strong> {rocket.name}
           </p>
         </div>
         <h4

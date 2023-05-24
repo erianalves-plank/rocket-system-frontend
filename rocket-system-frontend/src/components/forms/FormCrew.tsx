@@ -1,7 +1,12 @@
-import React, { useEffect } from 'react';
 import { Button, Form, Input } from 'antd';
+import React, { useEffect, useState } from 'react';
+import { CrewDTO } from '../../dtos/CrewDTO';
 import ItemsSelected from '../ItemsSelect';
-import { DataCrew } from '../cardContent/CardContentCrew';
+
+type CrewFormData = {
+  crew?: CrewDTO
+  crewmenDB?: string[]
+}
 
 const onFinish = (values: any) => {
   console.log('Success:', values);
@@ -11,15 +16,24 @@ const onFinishFailed = (errorInfo: any) => {
   console.log('Failed:', errorInfo);
 };
 
+const FormCrew: React.FC<CrewFormData> = ({ crew, crewmenDB }) => {
 
+  const [crewmenList, setCrewmenList] = useState<string[]>([]);
+  const [form] = Form.useForm();
 
-const FormCrew: React.FC<DataCrew> = (data) => {
   useEffect(() => {
-    console.log('---> 1', data); // Log the initial data passed
-    console.log('---> 1', data.name); // Log the initial data passed
-  }, [data]);
+    if (crew){
+      setCrewmenList(crew.crewmen.map(obj => obj.name));
+      form.setFieldsValue(crew);
+    }
+    else
+      form.resetFields();
+
+  }, [crew, form]);
+
   return (
     <Form
+      form={form}
       name="basic"
       labelCol={{ span: 4 }}
       wrapperCol={{ span: 16 }}
@@ -39,7 +53,7 @@ const FormCrew: React.FC<DataCrew> = (data) => {
         label='Crewmen'
         rules={[{ required: true, message: 'Please input the Crew name!' }]}
       >
-        <ItemsSelected />
+        <ItemsSelected options={crew ? crewmenList : crewmenDB ?? []}/>
       </Form.Item>
 
 

@@ -40,7 +40,6 @@ const Rocket = () => {
 
   const handleCancel = () => {
     setRocketSelected('');
-    /* formRef.current?.resetFields(); */
     setIsModalOpen(false);
   }
 

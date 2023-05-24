@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 import { Select } from 'antd';
 
-const OPTIONS = ['Ashkinn', 'Carlton', 'Calypso', 'Kate'];
+type PropsComponent = {
+  options: string[];
+}
 
-const ItemsSelected: React.FC = () => {
+const ItemsSelected: React.FC<PropsComponent> = ({options}) => {
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
 
-  const filteredOptions = OPTIONS.filter((o) => !selectedItems.includes(o));
+  const filteredOptions = options.filter((o) => !selectedItems.includes(o));
 
   return (
     <Select
       mode="multiple"
-      placeholder="Selecte the crewmen for the crew"
+      placeholder="Select the crewmen for the crew"
       value={selectedItems}
       onChange={setSelectedItems}
       style={{ width: '100%' }}

@@ -1,5 +1,10 @@
-import React from 'react';
-import { Button, Form, Input } from 'antd';
+import React, { useEffect, useState } from 'react';
+import { Button, Form, Input, Switch } from 'antd';
+import { LaunchDTO } from '../../dtos/LaunchDTO';
+
+type LaunchFormData = {
+  launch?: LaunchDTO
+}
 
 const onFinish = (values: any) => {
   console.log('Success:', values);
@@ -9,46 +14,94 @@ const onFinishFailed = (errorInfo: any) => {
   console.log('Failed:', errorInfo);
 };
 
-const FormLaunch: React.FC = () => (
-  <Form
-    name="basic"
-    labelCol={{ span: 4 }}
-    wrapperCol={{ span: 16 }}
-    style={{ maxWidth: 600 }}
-    onFinish={onFinish}
-    onFinishFailed={onFinishFailed}
-    autoComplete="off"
-  >
-    <Form.Item
-      label="Name"
-      name="name"
-      rules={[{ required: true, message: 'Please input the Launch name!' }]}
-    >
-      <Input />
-    </Form.Item>
-    <Form.Item
-      label="Rocket"
-      name="rocket"
-      rules={[{ required: true, message: 'Please input the rocket for the launch!' }]}
-    >
-      <Input />
-    </Form.Item>
-    <Form.Item
-      label="Crew"
-      name="crew"
-      rules={[{ required: false, message: 'Please input the crew for the launch!' }]}
-    >
-      <Input />
-    </Form.Item>
+const FormLaunch: React.FC<LaunchFormData> = ({ launch }) => {
 
-    <Form.Item wrapperCol={{ offset: 8, span: 8 }}>
-      <Button type="primary" htmlType="submit">
-        Submit
-      </Button>
-    </Form.Item>
-  </Form>
-);
+  const [form] = Form.useForm();
 
+  const [checked, setChecked] = useState(false);
+
+  const handleToggleSwitch = () => {
+    setChecked((prevChecked) => !prevChecked);
+  };
+
+  const handleSetSwitchValue = (value: boolean) => {
+    setChecked(value);
+  };
+
+  useEffect(() => {
+    console.log('>> ', launch);
+    if (launch){
+
+      form.setFieldsValue({
+        launchCode: launch.launchCode,
+        date: launch.date,
+        rocket: launch.rocket.name,
+        crew: launch.crew.name
+      });
+      handleSetSwitchValue(launch.success);
+    }
+    else
+      form.resetFields();
+  }, [launch, form]);
+
+  return (
+    <Form
+      form={form}
+      name="basic"
+      labelCol={{ span: 4 }}
+      wrapperCol={{ span: 16 }}
+      style={{ maxWidth: 600 }}
+      onFinish={onFinish}
+      onFinishFailed={onFinishFailed}
+      autoComplete="off"
+    >
+      <Form.Item
+        label="Launch Code"
+        name="launchCode"
+        rules={[{ required: true, message: 'Please input the Launch Code!' }]}
+      >
+        <Input />
+      </Form.Item>
+
+      <Form.Item
+        label="Date"
+        name="date"
+        rules={[{ required: true, message: 'Please input the Launch date!' }]}
+      >
+        <Input />
+      </Form.Item>
+
+      <Form.Item
+        label="Rocket"
+        name="rocket"
+        rules={[{ required: true, message: 'Please input the rocket for the launch!' }]}
+      >
+        <Input />
+      </Form.Item>
+
+      <Form.Item
+        label="Success"
+        rules={[{ required: true, message: 'Please check the success launch status!' }]}
+      >
+        <Switch checkedChildren="True" unCheckedChildren="False" checked={checked} onChange={handleToggleSwitch} />
+      </Form.Item>
+
+      <Form.Item
+        label="Crew"
+        name="crew"
+        rules={[{ required: false, message: 'Please input the crew for the launch!' }]}
+      >
+        <Input />
+      </Form.Item>
+
+      <Form.Item wrapperCol={{ offset: 8, span: 8 }}>
+        <Button type="primary" htmlType="submit">
+          Submit
+        </Button>
+      </Form.Item>
+    </Form>
+  );
+};
 export {
-    FormLaunch
+  FormLaunch
 };
