@@ -10,73 +10,79 @@ import { Modal } from 'antd'
 import { FormLaunch } from '../components/forms/FormLaunch.tsx'
 
 const Launch = () => {
-
-  const theme = useContext(ThemeContext);
+  const theme = useContext(ThemeContext)
 
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [modalTitle, setModalTitle] = useState('');
-  const [sendDataForm, setSendDataForm] = useState(false);
-  const [launchSelected, setLaunchSelected] = useState('');
+  const [modalTitle, setModalTitle] = useState('')
+  const [sendDataForm, setSendDataForm] = useState(false)
+  const [launchSelected, setLaunchSelected] = useState('')
 
-  const [formData, setFormData] = useState<LaunchDTO>();
+  const [formData, setFormData] = useState<LaunchDTO>()
 
   const handleOpenModal = (operation: string) => {
+    if (operation === 'Edit' && launchSelected === '') return
 
-    if (operation === 'Edit' && launchSelected === '')
-      return;
-
-    setModalTitle(`${operation} a Launch`);
+    setModalTitle(`${operation} a Launch`)
     setSendDataForm(() => {
-      return operation === 'Edit' ? true : false;
+      return operation === 'Edit' ? true : false
     })
-    setIsModalOpen(true);
+    setIsModalOpen(true)
   }
 
   const handleOk = () => {
-    setIsModalOpen(false);
+    setIsModalOpen(false)
   }
 
   const handleCancel = () => {
-    setLaunchSelected('');
-    setIsModalOpen(false);
+    setLaunchSelected('')
+    setIsModalOpen(false)
   }
 
   const handleCardClick = (launch: LaunchDTO) => {
-    setLaunchSelected(launch.id);
-    setFormData(launch);
-    console.log(`Card with ID ${launch.id} clicked`);
-  };
+    setLaunchSelected(launch.id)
+    setFormData(launch)
+    console.log(`Card with ID ${launch.id} clicked`)
+  }
 
   const handleDeleteLaunch = () => {
-    const launchId = launchSelected;
-    setLaunchSelected('');
-    return launchId;
+    const launchId = launchSelected
+    setLaunchSelected('')
+    return launchId
   }
 
   const cardsLaunch = GetLaunchs().map(item => {
-    return <CardContentLaunch key={item.id} id={item.id} launchCode={item.launchCode} date={item.date} success={item.success} rocket={item.rocket} crew={item.crew} onClick={() => handleCardClick(item)} />
+    return (
+      <CardContentLaunch
+        key={item.id}
+        id={item.id}
+        launchCode={item.launchCode}
+        date={item.date}
+        success={item.success}
+        rocket={item.rocket}
+        crew={item.crew}
+        onClick={() => handleCardClick(item)}
+      />
+    )
   })
 
   return (
-    <div
-      style={theme.layoutContentPage as React.CSSProperties}
-    >
-      <NavbarContentPages entityType='launch'/>
-      <main style={theme.containerContentPage as React.CSSProperties} >
-
-        <div style={theme.divContent as React.CSSProperties}>
-          {cardsLaunch}
-        </div>
-        <ButtonsManageResource handleClick={handleOpenModal} handleClickDelete={handleDeleteLaunch} />
+    <div style={theme.layoutContentPage as React.CSSProperties}>
+      <NavbarContentPages entityType="launch" />
+      <main style={theme.containerContentPage as React.CSSProperties}>
+        <div style={theme.divContent as React.CSSProperties}>{cardsLaunch}</div>
+        <ButtonsManageResource
+          handleClick={handleOpenModal}
+          handleClickDelete={handleDeleteLaunch}
+        />
 
         <Modal
           title={modalTitle}
           open={isModalOpen}
           onOk={handleOk}
           onCancel={handleCancel}
-          style={{ textAlign: 'center' }} >
-
-          {sendDataForm ? <FormLaunch  launch={formData} /> : <FormLaunch  />}
+          style={{ textAlign: 'center' }}
+        >
+          {sendDataForm ? <FormLaunch launch={formData} /> : <FormLaunch />}
         </Modal>
       </main>
       <Footer />

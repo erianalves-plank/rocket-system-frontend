@@ -3,7 +3,6 @@ import { CrewDTO } from '../../dtos/CrewDTO.tsx'
 import { RocketDTO } from '../../dtos/RocketDTO.tsx'
 import { ThemeContext } from '../../theme/ThemeContext.tsx'
 
-
 export interface DataLaunch {
   id: string
   launchCode: string
@@ -14,11 +13,17 @@ export interface DataLaunch {
   onClick: () => void
 }
 
+const CardContentLaunch: React.FC<DataLaunch> = ({
+  launchCode,
+  date,
+  success,
+  rocket,
+  crew,
+  onClick,
+}) => {
+  const theme = useContext(ThemeContext)
 
-const CardContentLaunch: React.FC<DataLaunch> = ({ launchCode, date, success, rocket, crew, onClick }) => {
-  const theme = useContext(ThemeContext);
-
-/*   const crewmenSection = crew.crewmen.map(item => {
+  /*   const crewmenSection = crew.crewmen.map(item => {
     const crewmanInfo = <>
       <p style={{ margin: 0, paddingLeft: '30px' }}>
         <strong>Name:</strong> {item.name}
@@ -33,11 +38,14 @@ const CardContentLaunch: React.FC<DataLaunch> = ({ launchCode, date, success, ro
  */
 
   const handleClick = () => {
-    onClick();
-  };
-  const infoSuccess = success ? 'True' : 'False';
+    onClick()
+  }
+  const infoSuccess = success ? 'True' : 'False'
   return (
-    <div style={theme.flexItemCrew as React.CSSProperties} onClick={handleClick} >
+    <div
+      style={theme.flexItemCrew as React.CSSProperties}
+      onClick={handleClick}
+    >
       <h3
         style={{
           marginTop: '2px',
@@ -73,17 +81,15 @@ const CardContentLaunch: React.FC<DataLaunch> = ({ launchCode, date, success, ro
           Crew
         </h4>
         <div>
-          
           <p style={{ margin: '0 0 10px 0', paddingLeft: '4px' }}>
             <strong>Name:</strong> {crew.name}
           </p>
 
-{/*           <p style={{ marginTop: '5px', marginBottom: '2px', paddingLeft: '4px' }}>Crewmen</p>
+          {/*           <p style={{ marginTop: '5px', marginBottom: '2px', paddingLeft: '4px' }}>Crewmen</p>
 
           <div>
             {crewmenSection}
           </div> */}
-
         </div>
       </div>
     </div>

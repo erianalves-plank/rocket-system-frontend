@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { ThemeContext } from '../../theme/ThemeContext';
+import { ThemeContext } from '../../theme/ThemeContext'
 
 export interface DataCrewman {
   id: string
@@ -8,22 +8,23 @@ export interface DataCrewman {
   onClick: () => void
 }
 
-
-const CardContentCrewman: React.FC<DataCrewman> = ({ name, patent, onClick }) => {
-
-  const theme = useContext(ThemeContext);
+const CardContentCrewman: React.FC<DataCrewman> = ({
+  name,
+  patent,
+  onClick,
+}) => {
+  const theme = useContext(ThemeContext)
 
   const handleClick = () => {
-    onClick();
-  };
+    onClick()
+  }
 
   return (
-    <div style={theme.flexItemCrew as React.CSSProperties} onClick={handleClick} >
-      <h3
-        style={theme.flexItemTitle}
-      >
-        Details
-      </h3>
+    <div
+      style={theme.flexItemCrew as React.CSSProperties}
+      onClick={handleClick}
+    >
+      <h3 style={theme.flexItemTitle}>Details</h3>
       <div>
         <p style={{ margin: 0, paddingLeft: '4px' }}>
           <strong>Name:</strong> {name}

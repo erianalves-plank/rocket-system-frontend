@@ -1,48 +1,44 @@
-import React, { useEffect, useState } from 'react';
-import { Button, Form, Input, Switch } from 'antd';
-import { LaunchDTO } from '../../dtos/LaunchDTO';
+import React, { useEffect, useState } from 'react'
+import { Button, Form, Input, Switch } from 'antd'
+import { LaunchDTO } from '../../dtos/LaunchDTO'
 
 type LaunchFormData = {
   launch?: LaunchDTO
 }
 
 const onFinish = (values: any) => {
-  console.log('Success:', values);
-};
+  console.log('Success:', values)
+}
 
 const onFinishFailed = (errorInfo: any) => {
-  console.log('Failed:', errorInfo);
-};
+  console.log('Failed:', errorInfo)
+}
 
 const FormLaunch: React.FC<LaunchFormData> = ({ launch }) => {
+  const [form] = Form.useForm()
 
-  const [form] = Form.useForm();
-
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState(false)
 
   const handleToggleSwitch = () => {
-    setChecked((prevChecked) => !prevChecked);
-  };
+    setChecked(prevChecked => !prevChecked)
+  }
 
   const handleSetSwitchValue = (value: boolean) => {
-    setChecked(value);
-  };
+    setChecked(value)
+  }
 
   useEffect(() => {
-    console.log('>> ', launch);
-    if (launch){
-
+    console.log('>> ', launch)
+    if (launch) {
       form.setFieldsValue({
         launchCode: launch.launchCode,
         date: launch.date,
         rocket: launch.rocket.name,
-        crew: launch.crew.name
-      });
-      handleSetSwitchValue(launch.success);
-    }
-    else
-      form.resetFields();
-  }, [launch, form]);
+        crew: launch.crew.name,
+      })
+      handleSetSwitchValue(launch.success)
+    } else form.resetFields()
+  }, [launch, form])
 
   return (
     <Form
@@ -74,22 +70,39 @@ const FormLaunch: React.FC<LaunchFormData> = ({ launch }) => {
       <Form.Item
         label="Rocket"
         name="rocket"
-        rules={[{ required: true, message: 'Please input the rocket for the launch!' }]}
+        rules={[
+          {
+            required: true,
+            message: 'Please input the rocket for the launch!',
+          },
+        ]}
       >
         <Input />
       </Form.Item>
 
       <Form.Item
         label="Success"
-        rules={[{ required: true, message: 'Please check the success launch status!' }]}
+        rules={[
+          {
+            required: true,
+            message: 'Please check the success launch status!',
+          },
+        ]}
       >
-        <Switch checkedChildren="True" unCheckedChildren="False" checked={checked} onChange={handleToggleSwitch} />
+        <Switch
+          checkedChildren="True"
+          unCheckedChildren="False"
+          checked={checked}
+          onChange={handleToggleSwitch}
+        />
       </Form.Item>
 
       <Form.Item
         label="Crew"
         name="crew"
-        rules={[{ required: false, message: 'Please input the crew for the launch!' }]}
+        rules={[
+          { required: false, message: 'Please input the crew for the launch!' },
+        ]}
       >
         <Input />
       </Form.Item>
@@ -100,8 +113,6 @@ const FormLaunch: React.FC<LaunchFormData> = ({ launch }) => {
         </Button>
       </Form.Item>
     </Form>
-  );
-};
-export {
-  FormLaunch
-};
+  )
+}
+export { FormLaunch }

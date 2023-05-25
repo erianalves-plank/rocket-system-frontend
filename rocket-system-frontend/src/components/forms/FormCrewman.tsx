@@ -1,30 +1,25 @@
-import React, { useEffect } from 'react';
-import { Button, Form, Input } from 'antd';
-import { CrewmanDTO } from '../../dtos/CrewmanDTO';
+import React, { useEffect } from 'react'
+import { Button, Form, Input } from 'antd'
+import { CrewmanDTO } from '../../dtos/CrewmanDTO'
 
 type CrewmanFormData = {
   crewman?: CrewmanDTO
 }
 
 const onFinish = (values: any) => {
-  console.log('Success:', values);
-};
+  console.log('Success:', values)
+}
 
 const onFinishFailed = (errorInfo: any) => {
-  console.log('Failed:', errorInfo);
-};
+  console.log('Failed:', errorInfo)
+}
 
 const FormCrewman: React.FC<CrewmanFormData> = ({ crewman }) => {
-  const [form] = Form.useForm();
+  const [form] = Form.useForm()
   useEffect(() => {
-    if (crewman)
-      form.setFieldsValue(crewman);
-    else
-      form.resetFields();
-
-
-  }, [crewman, form]);
-
+    if (crewman) form.setFieldsValue(crewman)
+    else form.resetFields()
+  }, [crewman, form])
 
   return (
     <Form
@@ -47,7 +42,9 @@ const FormCrewman: React.FC<CrewmanFormData> = ({ crewman }) => {
       <Form.Item
         label="Patent"
         name="patent"
-        rules={[{ required: true, message: 'Please input the Crewman patent!' }]}
+        rules={[
+          { required: true, message: 'Please input the Crewman patent!' },
+        ]}
       >
         <Input />
       </Form.Item>
@@ -58,8 +55,6 @@ const FormCrewman: React.FC<CrewmanFormData> = ({ crewman }) => {
         </Button>
       </Form.Item>
     </Form>
-  );
-};
-export {
-  FormCrewman
-};
+  )
+}
+export { FormCrewman }

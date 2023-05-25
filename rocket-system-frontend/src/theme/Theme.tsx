@@ -22,7 +22,7 @@ const theme = {
   layoutContentPage: {
     minHeight: '100vh',
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   navbar: {
     listStyle: 'none',
@@ -136,8 +136,8 @@ const theme = {
     background: '#e0b1cb',
     color: 'white',
     margin: 'auto 15px',
-    width: '100px'
-  }
+    width: '100px',
+  },
 }
 
 export default theme

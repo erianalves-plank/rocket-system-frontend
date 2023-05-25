@@ -11,8 +11,13 @@ export interface DataMainPage {
   redirect: string
 }
 
-const CardMainPage: React.FC<DataMainPage> = ({ name, img, description, redirect }) => {
-  const theme = useContext(ThemeContext);
+const CardMainPage: React.FC<DataMainPage> = ({
+  name,
+  img,
+  description,
+  redirect,
+}) => {
+  const theme = useContext(ThemeContext)
 
   return (
     <div style={theme.flexItem as React.CSSProperties}>

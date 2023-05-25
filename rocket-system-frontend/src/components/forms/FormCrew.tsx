@@ -1,36 +1,38 @@
-import { Button, Form, Input } from 'antd';
-import React, { useEffect, useState } from 'react';
-import { CrewDTO } from '../../dtos/CrewDTO';
-import ItemsSelected from '../ItemsSelect';
+import { Button, Form, Input } from 'antd'
+import React, { useEffect, useState } from 'react'
+import { CrewDTO } from '../../dtos/CrewDTO'
+import ItemsSelected from '../ItemsSelect'
 
 type CrewFormData = {
   crew?: CrewDTO
-  crewmenDB?: string[]
+  crewmenDB: string[]
 }
 
 const onFinish = (values: any) => {
-  console.log('Success:', values);
-};
+  console.log('Success:', values)
+}
 
 const onFinishFailed = (errorInfo: any) => {
-  console.log('Failed:', errorInfo);
-};
+  console.log('Failed:', errorInfo)
+}
 
 const FormCrew: React.FC<CrewFormData> = ({ crew, crewmenDB }) => {
-
-  const [crewmenList, setCrewmenList] = useState<string[]>([]);
-  const [form] = Form.useForm();
+  const [crewmenList, setCrewmenList] = useState<string[]>([])
+  const [form] = Form.useForm()
 
   useEffect(() => {
-    if (crew){
-      setCrewmenList(crew.crewmen.map(obj => obj.name));
-      form.setFieldsValue(crew);
+/*     console.log('Crew:', crew);
+    console.log('CrewmenDB:', crewmenDB); */
+
+    if (crew) {
+      setCrewmenList(crew.crewmen.map(obj => obj.name))
+      form.setFieldsValue(crew)
+    } else {
+      form.resetFields()
+      setCrewmenList([]);
     }
-    else
-      form.resetFields();
-
-  }, [crew, form]);
-
+  }, [crew, form])
+/*   console.log('CrewmenList:', crewmenList); */
   return (
     <Form
       form={form}
@@ -50,12 +52,11 @@ const FormCrew: React.FC<CrewFormData> = ({ crew, crewmenDB }) => {
         <Input />
       </Form.Item>
       <Form.Item
-        label='Crewmen'
+        label="Crewmen"
         rules={[{ required: true, message: 'Please input the Crew name!' }]}
       >
-        <ItemsSelected options={crew ? crewmenList : crewmenDB ?? []}/>
+        <ItemsSelected options={crewmenDB} itemsAlreadySelected={crewmenList} />
       </Form.Item>
-
 
       <Form.Item wrapperCol={{ offset: 8, span: 8 }}>
         <Button type="primary" htmlType="submit">
@@ -64,8 +65,6 @@ const FormCrew: React.FC<CrewFormData> = ({ crew, crewmenDB }) => {
       </Form.Item>
     </Form>
   )
-};
+}
 
-export {
-  FormCrew
-};
+export { FormCrew }
