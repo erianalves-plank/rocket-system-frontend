@@ -4,6 +4,7 @@ import { LaunchDTO } from '../../dtos/LaunchDTO'
 
 type LaunchFormData = {
   launch?: LaunchDTO
+  handleOperationLaunch: (data: Partial<LaunchDTO>) => void;
 }
 
 const onFinish = (values: any) => {
@@ -14,7 +15,7 @@ const onFinishFailed = (errorInfo: any) => {
   console.log('Failed:', errorInfo)
 }
 
-const FormLaunch: React.FC<LaunchFormData> = ({ launch }) => {
+const FormLaunch: React.FC<LaunchFormData> = ({ launch, handleOperationLaunch }) => {
   const [form] = Form.useForm()
 
   const [checked, setChecked] = useState(false)
@@ -27,14 +28,20 @@ const FormLaunch: React.FC<LaunchFormData> = ({ launch }) => {
     setChecked(value)
   }
 
+  const dataSubmitted = (values: Partial<LaunchDTO>) => {
+    values['success'] = checked;
+    console.log('values ', values);
+    handleOperationLaunch(values);
+  }
+
   useEffect(() => {
     console.log('>> ', launch)
     if (launch) {
       form.setFieldsValue({
         launchCode: launch.launchCode,
         date: launch.date,
-        rocket: launch.rocket.name,
-        crew: launch.crew.name,
+        rocketId: launch.rocket.name,
+        crewId: launch.crew.name,
       })
       handleSetSwitchValue(launch.success)
     } else form.resetFields()
@@ -47,7 +54,7 @@ const FormLaunch: React.FC<LaunchFormData> = ({ launch }) => {
       labelCol={{ span: 4 }}
       wrapperCol={{ span: 16 }}
       style={{ maxWidth: 600 }}
-      onFinish={onFinish}
+      onFinish={dataSubmitted}
       onFinishFailed={onFinishFailed}
       autoComplete="off"
     >
@@ -69,7 +76,7 @@ const FormLaunch: React.FC<LaunchFormData> = ({ launch }) => {
 
       <Form.Item
         label="Rocket"
-        name="rocket"
+        name="rocketId"
         rules={[
           {
             required: true,
@@ -99,7 +106,7 @@ const FormLaunch: React.FC<LaunchFormData> = ({ launch }) => {
 
       <Form.Item
         label="Crew"
-        name="crew"
+        name="crewId"
         rules={[
           { required: false, message: 'Please input the crew for the launch!' },
         ]}
