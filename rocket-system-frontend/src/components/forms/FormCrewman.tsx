@@ -4,6 +4,7 @@ import { CrewmanDTO } from '../../dtos/CrewmanDTO'
 
 type CrewmanFormData = {
   crewman?: CrewmanDTO
+  handleOperationCrewman: (data: Partial<CrewmanDTO>) => void;
 }
 
 const onFinish = (values: any) => {
@@ -14,13 +15,16 @@ const onFinishFailed = (errorInfo: any) => {
   console.log('Failed:', errorInfo)
 }
 
-const FormCrewman: React.FC<CrewmanFormData> = ({ crewman }) => {
+const FormCrewman: React.FC<CrewmanFormData> = ({ crewman, handleOperationCrewman }) => {
   const [form] = Form.useForm()
   useEffect(() => {
     if (crewman) form.setFieldsValue(crewman)
     else form.resetFields()
   }, [crewman, form])
 
+  const dataSubmitted = (values: Partial<CrewmanDTO>) => {
+    handleOperationCrewman(values);
+  }
   return (
     <Form
       form={form}
@@ -28,7 +32,7 @@ const FormCrewman: React.FC<CrewmanFormData> = ({ crewman }) => {
       labelCol={{ span: 4 }}
       wrapperCol={{ span: 16 }}
       style={{ maxWidth: 600 }}
-      onFinish={onFinish}
+      onFinish={dataSubmitted}
       onFinishFailed={onFinishFailed}
       autoComplete="off"
     >

@@ -8,6 +8,8 @@ import GetCremwen from '../mockedData/dataCrewman.tsx'
 import { Modal } from 'antd'
 import { FormCrewman } from '../components/forms/FormCrewman.tsx'
 import { CrewmanDTO } from '../dtos/CrewmanDTO.tsx'
+import { API_BASE_URL } from '../api/api.ts'
+import axios from 'axios'
 
 const Crewman = () => {
   const theme = useContext(ThemeContext)
@@ -16,8 +18,40 @@ const Crewman = () => {
   const [modalTitle, setModalTitle] = useState('')
   const [sendDataForm, setSendDataForm] = useState(false)
   const [crewmanSelected, setCrewmanSelected] = useState('')
+  const [crewmen, setCrewmen] = useState<CrewmanDTO[]>([])
 
   const [formData, setFormData] = useState<CrewmanDTO>()
+
+  const fetchCrewmen = async () => {
+    const data = await axios.get<CrewmanDTO[]>(API_BASE_URL + `crewman`);
+    const crewmansList = data.data;
+    setCrewmen(crewmansList);
+  }
+
+  const postCrewman = async (crewman: Partial<CrewmanDTO>) => {
+    const response = await axios.post(API_BASE_URL + 'crewman', crewman);
+    fetchCrewmen();
+    console.log('About the post operation ', response);
+  }
+
+  const updateCrewman = async (id: string, crewman: Partial<CrewmanDTO>) => {
+    const response = await axios.put(API_BASE_URL + `crewman/${id}`, crewman);
+    fetchCrewmen();
+    console.log('About the put operation ', response);
+  }
+
+  const deleteCrewman = async (id: string) => {
+    await axios.delete<void>(API_BASE_URL + `crewman/${id}`);
+    fetchCrewmen();
+  }
+
+  useEffect(() => {
+    fetchCrewmen();
+  }, []);
+
+  useEffect(() => {
+    console.log('-> ', crewmen);
+  }, [crewmen]);
 
   const handleOpenModal = (operation: string) => {
     if (operation === 'Edit' && crewmanSelected === '') return
@@ -44,28 +78,38 @@ const Crewman = () => {
 
   const handleDeleteCrewman = () => {
     const crewmanId = crewmanSelected
+    deleteCrewman(crewmanId);
     setCrewmanSelected('')
     return crewmanId
   }
 
-  const cardsCrewmen = GetCremwen().map(item => {
-    return (
-      <CardContentCrewman
-        key={item.id}
-        id={item.id}
-        name={item.name}
-        patent={item.patent}
-        onClick={() => handleCardClick(item)}
-      />
-    )
-  })
+  const handleCreateCrewman = (crewman: Partial<CrewmanDTO>) => {
+    postCrewman(crewman);
+    setIsModalOpen(false);
+  }
+
+  const handleUpdateCrewman = (crewman: Partial<CrewmanDTO>) => {
+    const crewmanId = crewmanSelected
+    updateCrewman(crewmanId, crewman);
+    setIsModalOpen(false);
+  }
 
   return (
     <div style={theme.layoutContentPage as React.CSSProperties}>
       <NavbarContentPages entityType="crewman" />
       <main style={theme.containerContentPage as React.CSSProperties}>
         <div style={theme.divContent as React.CSSProperties}>
-          {cardsCrewmen}
+          {crewmen.map(item => {
+            return (
+              <CardContentCrewman
+                key={item.id}
+                id={item.id}
+                name={item.name}
+                patent={item.patent}
+                onClick={() => handleCardClick(item)}
+              />
+            )
+          })}
         </div>
         <ButtonsManageResource
           handleClick={handleOpenModal}
@@ -79,7 +123,7 @@ const Crewman = () => {
           onCancel={handleCancel}
           style={{ textAlign: 'center' }}
         >
-          {sendDataForm ? <FormCrewman crewman={formData} /> : <FormCrewman />}
+          {sendDataForm ? <FormCrewman crewman={formData} handleOperationCrewman={handleUpdateCrewman} /> : <FormCrewman handleOperationCrewman={handleCreateCrewman} />}
         </Modal>
       </main>
       <Footer />
