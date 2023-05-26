@@ -4,21 +4,23 @@ import { Select } from 'antd'
 type PropsComponent = {
   options: string[]
   itemsAlreadySelected?: string[]
+  handleReturnSelectedValues: (valuesSelected: string[]) => void;
 }
 
-const ItemsSelected: React.FC<PropsComponent> = ({ options, itemsAlreadySelected = [] }) => {
+const ItemsSelected: React.FC<PropsComponent> = ({ options, itemsAlreadySelected = [], handleReturnSelectedValues }) => {
   const [selectedItems, setSelectedItems] = useState<string[]>(itemsAlreadySelected)
   useEffect(() => {
     console.log('Selected Items:', selectedItems);
   }, [selectedItems]);
   const filteredOptions = options.filter(o => !selectedItems.includes(o))
 
-  console.log('Options:', options);
-  console.log('Filtered Options:', filteredOptions);
+  /*   console.log('Options:', options);
+    console.log('Filtered Options:', filteredOptions); */
 
   const handleChange = (values: string[]) => {
     console.log('Selected Values:', values);
     setSelectedItems(values);
+    handleReturnSelectedValues(values);
   };
 
   return (

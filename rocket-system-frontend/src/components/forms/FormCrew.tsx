@@ -4,8 +4,9 @@ import { CrewDTO } from '../../dtos/CrewDTO'
 import ItemsSelected from '../ItemsSelect'
 
 type CrewFormData = {
-  crew?: CrewDTO
-  crewmenDB: string[]
+  crew?: CrewDTO;
+  crewmenDB: string[];
+  handleOperationCrew: (data: Partial<CrewDTO>, crewmenNames: string[]) => void;
 }
 
 const onFinish = (values: any) => {
@@ -16,13 +17,17 @@ const onFinishFailed = (errorInfo: any) => {
   console.log('Failed:', errorInfo)
 }
 
-const FormCrew: React.FC<CrewFormData> = ({ crew, crewmenDB }) => {
+const FormCrew: React.FC<CrewFormData> = ({ crew, crewmenDB, handleOperationCrew }) => {
   const [crewmenList, setCrewmenList] = useState<string[]>([])
+  const [crewmenSelected, setCrewmenSelected] = useState<string[]>([]);
   const [form] = Form.useForm()
 
+
+  const getSelectedItems = (crewmenSelected: string[]) => {
+    setCrewmenSelected(crewmenSelected);
+  }
+
   useEffect(() => {
-/*     console.log('Crew:', crew);
-    console.log('CrewmenDB:', crewmenDB); */
 
     if (crew) {
       setCrewmenList(crew.crewmen.map(obj => obj.name))
@@ -32,7 +37,10 @@ const FormCrew: React.FC<CrewFormData> = ({ crew, crewmenDB }) => {
       setCrewmenList([]);
     }
   }, [crew, form])
-/*   console.log('CrewmenList:', crewmenList); */
+  const dataSubmitted = (values: Partial<CrewDTO>) => {
+    console.log('values ', values, ' -> ', crewmenSelected);
+    handleOperationCrew(values, crewmenSelected);
+  }
   return (
     <Form
       form={form}
@@ -40,7 +48,7 @@ const FormCrew: React.FC<CrewFormData> = ({ crew, crewmenDB }) => {
       labelCol={{ span: 4 }}
       wrapperCol={{ span: 16 }}
       style={{ maxWidth: 600 }}
-      onFinish={onFinish}
+      onFinish={dataSubmitted}
       onFinishFailed={onFinishFailed}
       autoComplete="off"
     >
@@ -55,7 +63,7 @@ const FormCrew: React.FC<CrewFormData> = ({ crew, crewmenDB }) => {
         label="Crewmen"
         rules={[{ required: true, message: 'Please input the Crew name!' }]}
       >
-        <ItemsSelected options={crewmenDB} itemsAlreadySelected={crewmenList} />
+        <ItemsSelected options={crewmenDB} itemsAlreadySelected={crewmenList} handleReturnSelectedValues={getSelectedItems} />
       </Form.Item>
 
       <Form.Item wrapperCol={{ offset: 8, span: 8 }}>

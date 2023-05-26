@@ -1,15 +1,14 @@
+import { Modal } from 'antd'
+import axios from 'axios'
+import React, { useContext, useEffect, useState } from 'react'
+import { API_BASE_URL, getCrews, getRockets } from '../api/api.ts'
 import { ButtonsManageResource } from '../components/ButtonsManageResource'
 import { Footer } from '../components/Footer'
 import { NavbarContentPages } from '../components/NavbarContentPages'
 import { CardContentLaunch } from '../components/cardContent/CardContentLaunch'
-import { ThemeContext } from '../theme/ThemeContext.tsx'
-import React, { useContext, useEffect, useState } from 'react'
-import GetLaunchs from '../mockedData/dataLaunch.tsx'
-import { LaunchDTO } from '../dtos/LaunchDTO.tsx'
-import { Modal } from 'antd'
 import { FormLaunch } from '../components/forms/FormLaunch.tsx'
-import { API_BASE_URL, getCrews, getRockets } from '../api/api.ts'
-import axios from 'axios'
+import { LaunchDTO } from '../dtos/LaunchDTO.tsx'
+import { ThemeContext } from '../theme/ThemeContext.tsx'
 
 const Launch = () => {
   const theme = useContext(ThemeContext)
