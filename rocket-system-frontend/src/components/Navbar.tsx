@@ -1,4 +1,4 @@
-import { RocketOutlined } from '@ant-design/icons'
+import { RocketOutlined } from '@ant-design/icons';
 
 const Navbar = () => {
   return (
@@ -16,7 +16,7 @@ const Navbar = () => {
       </li>
       <RocketOutlined style={{ fontSize: '48px', color: '#e0b1cb' }} />
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

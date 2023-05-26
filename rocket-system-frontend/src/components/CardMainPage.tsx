@@ -1,14 +1,14 @@
-import { Link } from 'react-router-dom'
-import '../css/index.css'
-import { useContext } from 'react'
-import { ThemeContext } from '../theme/ThemeContext'
+import { Link } from 'react-router-dom';
+import '../css/index.css';
+import { useContext } from 'react';
+import { ThemeContext } from '../theme/ThemeContext';
 
 export interface DataMainPage {
-  id: number
-  name: string
-  img: string
-  description: string
-  redirect: string
+  id: number;
+  name: string;
+  img: string;
+  description: string;
+  redirect: string;
 }
 
 const CardMainPage: React.FC<DataMainPage> = ({
@@ -17,7 +17,7 @@ const CardMainPage: React.FC<DataMainPage> = ({
   description,
   redirect,
 }) => {
-  const theme = useContext(ThemeContext)
+  const theme = useContext(ThemeContext);
 
   return (
     <div style={theme.flexItem as React.CSSProperties}>
@@ -28,7 +28,7 @@ const CardMainPage: React.FC<DataMainPage> = ({
         <Link to={redirect}>Check More</Link>{' '}
       </p>
     </div>
-  )
-}
+  );
+};
 
-export { CardMainPage }
+export { CardMainPage };

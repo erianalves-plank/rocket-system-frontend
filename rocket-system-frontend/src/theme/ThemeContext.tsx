@@ -1,6 +1,6 @@
-import React from 'react'
-import { theme } from './Theme'
+import React from 'react';
+import { theme } from './Theme';
 
-const ThemeContext = React.createContext(theme)
+const ThemeContext = React.createContext(theme);
 
-export { ThemeContext }
+export { ThemeContext };

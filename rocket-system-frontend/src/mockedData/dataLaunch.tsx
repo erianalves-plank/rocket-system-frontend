@@ -42,7 +42,7 @@ export default function GetLaunchs() {
         ],
       },
     },
-  ]
+  ];
 
-  return data
+  return data;
 }

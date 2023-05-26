@@ -138,8 +138,8 @@ const theme = {
     margin: 'auto 15px',
     width: '100px',
   },
-}
+};
 
-export default theme
+export default theme;
 
-export { theme }
+export { theme };

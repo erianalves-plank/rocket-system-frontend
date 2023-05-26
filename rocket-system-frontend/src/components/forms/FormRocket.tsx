@@ -1,37 +1,40 @@
-import { Button, Form, Input } from 'antd'
-import React, { useEffect } from 'react'
-import { RocketDTO } from '../../dtos/RocketDTO'
+import { Button, Form, Input } from 'antd';
+import React, { useEffect } from 'react';
+import { RocketDTO } from '../../dtos/RocketDTO';
 
 type RocketFormData = {
   rocket?: RocketDTO;
   handleOperationRocket: (data: Partial<RocketDTO>) => void;
   /* formRef: React.RefObject<typeof Form>; */
-}
+};
 
 const onFinish = (values: Partial<RocketDTO>) => {
-  console.log('Success:', values)
-}
+  console.log('Success:', values);
+};
 
 const onFinishFailed = (errorInfo: any) => {
-  console.log('Failed:', errorInfo)
-}
+  console.log('Failed:', errorInfo);
+};
 
-const FormRocket: React.FC<RocketFormData> = ({ rocket, handleOperationRocket }) => {
-  const [form] = Form.useForm()
+const FormRocket: React.FC<RocketFormData> = ({
+  rocket,
+  handleOperationRocket,
+}) => {
+  const [form] = Form.useForm();
 
   useEffect(() => {
     /*     const fieldValues = rocket ? rocket : {};
         console.log('let me ', fieldValues);
         form.setFieldsValue(fieldValues); */
 
-    if (rocket) form.setFieldsValue(rocket)
-    else form.resetFields()
-  }, [rocket, form])
+    if (rocket) form.setFieldsValue(rocket);
+    else form.resetFields();
+  }, [rocket, form]);
   /* console.log(rocket, ' / ', form.getFieldsValue()); */
 
   const dataSubmitted = (values: Partial<RocketDTO>) => {
     handleOperationRocket(values);
-  }
+  };
 
   return (
     <Form
@@ -43,7 +46,7 @@ const FormRocket: React.FC<RocketFormData> = ({ rocket, handleOperationRocket })
       onFinish={dataSubmitted}
       onFinishFailed={onFinishFailed}
       autoComplete="off"
-    /* ref={formRef} */
+      /* ref={formRef} */
     >
       <Form.Item
         label="Name"
@@ -59,7 +62,7 @@ const FormRocket: React.FC<RocketFormData> = ({ rocket, handleOperationRocket })
         </Button>
       </Form.Item>
     </Form>
-  )
-}
+  );
+};
 
-export { FormRocket }
+export { FormRocket };

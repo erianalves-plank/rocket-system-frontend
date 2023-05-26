@@ -1,17 +1,17 @@
-import React, { useContext } from 'react'
-import { ThemeContext } from '../../theme/ThemeContext'
+import React, { useContext } from 'react';
+import { ThemeContext } from '../../theme/ThemeContext';
 
 export interface DataRocket {
-  id: string
-  name: string
-  onClick: () => void
+  id: string;
+  name: string;
+  onClick: () => void;
 }
 const CardContent: React.FC<DataRocket> = ({ name, onClick }) => {
-  const theme = useContext(ThemeContext)
+  const theme = useContext(ThemeContext);
 
   const handleClick = () => {
-    onClick()
-  }
+    onClick();
+  };
 
   return (
     <div
@@ -23,7 +23,7 @@ const CardContent: React.FC<DataRocket> = ({ name, onClick }) => {
         <p>Name: {name}</p>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export { CardContent }
+export { CardContent };

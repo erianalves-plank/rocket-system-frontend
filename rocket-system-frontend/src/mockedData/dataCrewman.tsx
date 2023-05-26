@@ -30,7 +30,7 @@ export default function GetCrewmen() {
       name: 'Kiin',
       patent: 'Physist',
     },
-  ]
+  ];
 
-  return data
+  return data;
 }

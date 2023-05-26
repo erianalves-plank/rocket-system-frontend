@@ -1,7 +1,7 @@
-import { LeftCircleOutlined } from '@ant-design/icons'
-import { Link } from 'react-router-dom'
+import { LeftCircleOutlined } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
 interface PropsType {
-  entityType: string
+  entityType: string;
 }
 
 const NavbarContentPages: React.FC<PropsType> = ({ entityType }) => {
@@ -22,7 +22,7 @@ const NavbarContentPages: React.FC<PropsType> = ({ entityType }) => {
         {entityType[0].toUpperCase() + entityType.slice(1) + ' Section'}
       </li>
     </nav>
-  )
-}
+  );
+};
 
-export { NavbarContentPages }
+export { NavbarContentPages };

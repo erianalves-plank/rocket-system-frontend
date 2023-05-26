@@ -1,30 +1,33 @@
-import React, { useEffect } from 'react'
-import { Button, Form, Input } from 'antd'
-import { CrewmanDTO } from '../../dtos/CrewmanDTO'
+import React, { useEffect } from 'react';
+import { Button, Form, Input } from 'antd';
+import { CrewmanDTO } from '../../dtos/CrewmanDTO';
 
 type CrewmanFormData = {
-  crewman?: CrewmanDTO
+  crewman?: CrewmanDTO;
   handleOperationCrewman: (data: Partial<CrewmanDTO>) => void;
-}
+};
 
 const onFinish = (values: any) => {
-  console.log('Success:', values)
-}
+  console.log('Success:', values);
+};
 
 const onFinishFailed = (errorInfo: any) => {
-  console.log('Failed:', errorInfo)
-}
+  console.log('Failed:', errorInfo);
+};
 
-const FormCrewman: React.FC<CrewmanFormData> = ({ crewman, handleOperationCrewman }) => {
-  const [form] = Form.useForm()
+const FormCrewman: React.FC<CrewmanFormData> = ({
+  crewman,
+  handleOperationCrewman,
+}) => {
+  const [form] = Form.useForm();
   useEffect(() => {
-    if (crewman) form.setFieldsValue(crewman)
-    else form.resetFields()
-  }, [crewman, form])
+    if (crewman) form.setFieldsValue(crewman);
+    else form.resetFields();
+  }, [crewman, form]);
 
   const dataSubmitted = (values: Partial<CrewmanDTO>) => {
     handleOperationCrewman(values);
-  }
+  };
   return (
     <Form
       form={form}
@@ -59,6 +62,6 @@ const FormCrewman: React.FC<CrewmanFormData> = ({ crewman, handleOperationCrewma
         </Button>
       </Form.Item>
     </Form>
-  )
-}
-export { FormCrewman }
+  );
+};
+export { FormCrewman };

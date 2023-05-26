@@ -35,4 +35,4 @@ export default [
         gingerbread jelly.`,
     redirect: '/launch',
   },
-]
+];

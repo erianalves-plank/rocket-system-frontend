@@ -1,10 +1,10 @@
-import { useContext } from 'react'
-import { CardMainPage } from '../components/CardMainPage'
-import { Footer } from '../components/Footer'
-import { Header } from '../components/Header'
-import Navbar from '../components/Navbar'
-import data from '../mockedData/dataMainPage.tsx'
-import { ThemeContext } from '../theme/ThemeContext.tsx'
+import { useContext } from 'react';
+import { CardMainPage } from '../components/CardMainPage';
+import { Footer } from '../components/Footer';
+import { Header } from '../components/Header';
+import Navbar from '../components/Navbar';
+import data from '../mockedData/dataMainPage.tsx';
+import { ThemeContext } from '../theme/ThemeContext.tsx';
 
 const Root = () => {
   const cardsMainPage = data.map(item => {
@@ -17,16 +17,16 @@ const Root = () => {
         description={item.description}
         redirect={item.redirect}
       />
-    )
-  })
-  const theme = useContext(ThemeContext)
+    );
+  });
+  const theme = useContext(ThemeContext);
 
   const outerDivStyle = {
     background: theme.colors.primary,
     minHeight: theme.layout.minHeight,
     display: theme.layout.display,
     flexDirection: theme.layout.flexDirection,
-  }
+  };
 
   return (
     <div style={outerDivStyle}>
@@ -37,7 +37,7 @@ const Root = () => {
       </main>
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export { Root }
+export { Root };

@@ -1,31 +1,31 @@
-import { Button } from 'antd'
-import { useContext } from 'react'
-import { ThemeContext } from '../theme/ThemeContext'
+import { Button } from 'antd';
+import { useContext } from 'react';
+import { ThemeContext } from '../theme/ThemeContext';
 
 interface ChildComponentProps {
-  handleClick: (operation: string) => void
-  handleClickDelete: () => void
+  handleClick: (operation: string) => void;
+  handleClickDelete: () => void;
 }
 
 const ButtonsManageResource: React.FC<ChildComponentProps> = ({
   handleClick,
   handleClickDelete,
 }) => {
-  const theme = useContext(ThemeContext)
+  const theme = useContext(ThemeContext);
 
   const style = {
     marginTop: theme.divBtn.marginTop,
-  }
+  };
 
   const handleClickAddButton = () => {
-    handleClick('Add')
-  }
+    handleClick('Add');
+  };
   const handleClickEditButton = () => {
-    handleClick('Edit')
-  }
+    handleClick('Edit');
+  };
   const handleClickDeleteButton = () => {
-    console.log(handleClickDelete())
-  }
+    console.log(handleClickDelete());
+  };
 
   return (
     <div style={style}>
@@ -46,7 +46,7 @@ const ButtonsManageResource: React.FC<ChildComponentProps> = ({
         Delete
       </Button>
     </div>
-  )
-}
+  );
+};
 
-export { ButtonsManageResource }
+export { ButtonsManageResource };

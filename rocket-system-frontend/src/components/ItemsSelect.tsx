@@ -1,18 +1,23 @@
-import React, { useEffect, useState } from 'react'
-import { Select } from 'antd'
+import React, { useEffect, useState } from 'react';
+import { Select } from 'antd';
 
 type PropsComponent = {
-  options: string[]
-  itemsAlreadySelected?: string[]
+  options: string[];
+  itemsAlreadySelected?: string[];
   handleReturnSelectedValues: (valuesSelected: string[]) => void;
-}
+};
 
-const ItemsSelected: React.FC<PropsComponent> = ({ options, itemsAlreadySelected = [], handleReturnSelectedValues }) => {
-  const [selectedItems, setSelectedItems] = useState<string[]>(itemsAlreadySelected)
+const ItemsSelected: React.FC<PropsComponent> = ({
+  options,
+  itemsAlreadySelected = [],
+  handleReturnSelectedValues,
+}) => {
+  const [selectedItems, setSelectedItems] =
+    useState<string[]>(itemsAlreadySelected);
   useEffect(() => {
     console.log('Selected Items:', selectedItems);
   }, [selectedItems]);
-  const filteredOptions = options.filter(o => !selectedItems.includes(o))
+  const filteredOptions = options.filter(o => !selectedItems.includes(o));
 
   /*   console.log('Options:', options);
     console.log('Filtered Options:', filteredOptions); */
@@ -35,7 +40,7 @@ const ItemsSelected: React.FC<PropsComponent> = ({ options, itemsAlreadySelected
         label: item,
       }))}
     />
-  )
-}
+  );
+};
 
-export default ItemsSelected
+export default ItemsSelected;

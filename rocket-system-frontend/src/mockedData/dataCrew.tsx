@@ -48,7 +48,7 @@ export default function GetCrews() {
         },
       ],
     },
-  ]
+  ];
 
-  return data
+  return data;
 }

@@ -1,11 +1,15 @@
-import { Button, Form, Input, Switch } from 'antd'
-import React, { useEffect, useState } from 'react'
-import { LaunchDTO } from '../../dtos/LaunchDTO'
+import { Button, Form, Input, Switch } from 'antd';
+import React, { useEffect, useState } from 'react';
+import { LaunchDTO } from '../../dtos/LaunchDTO';
 
 type LaunchFormData = {
-  launch?: LaunchDTO
-  handleOperationLaunch: (data: Partial<LaunchDTO>, rocketName: string, crewName: string) => void;
-}
+  launch?: LaunchDTO;
+  handleOperationLaunch: (
+    data: Partial<LaunchDTO>,
+    rocketName: string,
+    crewName: string
+  ) => void;
+};
 
 type LaunchFormReturn = {
   name: string;
@@ -14,47 +18,50 @@ type LaunchFormReturn = {
   success: boolean;
   rocketName: string;
   crewName: string;
-}
+};
 
 const onFinish = (values: any) => {
-  console.log('Success:', values)
-}
+  console.log('Success:', values);
+};
 
 const onFinishFailed = (errorInfo: any) => {
-  console.log('Failed:', errorInfo)
-}
+  console.log('Failed:', errorInfo);
+};
 
-const FormLaunch: React.FC<LaunchFormData> = ({ launch, handleOperationLaunch }) => {
-  const [form] = Form.useForm()
+const FormLaunch: React.FC<LaunchFormData> = ({
+  launch,
+  handleOperationLaunch,
+}) => {
+  const [form] = Form.useForm();
 
-  const [checked, setChecked] = useState(false)
+  const [checked, setChecked] = useState(false);
 
   const handleToggleSwitch = () => {
-    setChecked(prevChecked => !prevChecked)
-  }
+    setChecked(prevChecked => !prevChecked);
+  };
 
   const handleSetSwitchValue = (value: boolean) => {
-    setChecked(value)
-  }
+    setChecked(value);
+  };
 
   const dataSubmitted = (values: LaunchFormReturn) => {
     values['success'] = checked;
     console.log('values ', values);
     handleOperationLaunch(values, values.rocketName, values.crewName);
-  }
+  };
 
   useEffect(() => {
-    console.log('>> ', launch)
+    console.log('>> ', launch);
     if (launch) {
       form.setFieldsValue({
         launchCode: launch.launchCode,
         date: launch.date,
         rocketName: launch.rocket.name,
         crewName: launch.crew.name,
-      })
-      handleSetSwitchValue(launch.success)
-    } else form.resetFields()
-  }, [launch, form])
+      });
+      handleSetSwitchValue(launch.success);
+    } else form.resetFields();
+  }, [launch, form]);
 
   return (
     <Form
@@ -129,6 +136,6 @@ const FormLaunch: React.FC<LaunchFormData> = ({ launch, handleOperationLaunch })
         </Button>
       </Form.Item>
     </Form>
-  )
-}
-export { FormLaunch }
+  );
+};
+export { FormLaunch };

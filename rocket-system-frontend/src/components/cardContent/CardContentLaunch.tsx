@@ -1,16 +1,16 @@
-import { useContext } from 'react'
-import { CrewDTO } from '../../dtos/CrewDTO.tsx'
-import { RocketDTO } from '../../dtos/RocketDTO.tsx'
-import { ThemeContext } from '../../theme/ThemeContext.tsx'
+import { useContext } from 'react';
+import { CrewDTO } from '../../dtos/CrewDTO.tsx';
+import { RocketDTO } from '../../dtos/RocketDTO.tsx';
+import { ThemeContext } from '../../theme/ThemeContext.tsx';
 
 export interface DataLaunch {
-  id: string
-  launchCode: string
-  date: string
-  success: boolean
-  rocket: RocketDTO
-  crew: CrewDTO
-  onClick: () => void
+  id: string;
+  launchCode: string;
+  date: string;
+  success: boolean;
+  rocket: RocketDTO;
+  crew: CrewDTO;
+  onClick: () => void;
 }
 
 const CardContentLaunch: React.FC<DataLaunch> = ({
@@ -21,7 +21,7 @@ const CardContentLaunch: React.FC<DataLaunch> = ({
   crew,
   onClick,
 }) => {
-  const theme = useContext(ThemeContext)
+  const theme = useContext(ThemeContext);
 
   /*   const crewmenSection = crew.crewmen.map(item => {
     const crewmanInfo = <>
@@ -38,9 +38,9 @@ const CardContentLaunch: React.FC<DataLaunch> = ({
  */
 
   const handleClick = () => {
-    onClick()
-  }
-  const infoSuccess = success ? 'True' : 'False'
+    onClick();
+  };
+  const infoSuccess = success ? 'True' : 'False';
   return (
     <div
       style={theme.flexItemCrew as React.CSSProperties}
@@ -93,7 +93,7 @@ const CardContentLaunch: React.FC<DataLaunch> = ({
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export { CardContentLaunch }
+export { CardContentLaunch };

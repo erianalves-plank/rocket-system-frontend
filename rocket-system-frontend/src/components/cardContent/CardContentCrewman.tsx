@@ -1,11 +1,11 @@
-import React, { useContext } from 'react'
-import { ThemeContext } from '../../theme/ThemeContext'
+import React, { useContext } from 'react';
+import { ThemeContext } from '../../theme/ThemeContext';
 
 export interface DataCrewman {
-  id: string
-  name: string
-  patent: string
-  onClick: () => void
+  id: string;
+  name: string;
+  patent: string;
+  onClick: () => void;
 }
 
 const CardContentCrewman: React.FC<DataCrewman> = ({
@@ -13,11 +13,11 @@ const CardContentCrewman: React.FC<DataCrewman> = ({
   patent,
   onClick,
 }) => {
-  const theme = useContext(ThemeContext)
+  const theme = useContext(ThemeContext);
 
   const handleClick = () => {
-    onClick()
-  }
+    onClick();
+  };
 
   return (
     <div
@@ -34,7 +34,7 @@ const CardContentCrewman: React.FC<DataCrewman> = ({
         </p>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export { CardContentCrewman }
+export { CardContentCrewman };

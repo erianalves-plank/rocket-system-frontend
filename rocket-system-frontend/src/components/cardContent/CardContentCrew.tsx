@@ -1,20 +1,20 @@
-import React, { useContext } from 'react'
-import { CrewmanDTO } from '../../dtos/CrewmanDTO'
-import { ThemeContext } from '../../theme/ThemeContext'
+import React, { useContext } from 'react';
+import { CrewmanDTO } from '../../dtos/CrewmanDTO';
+import { ThemeContext } from '../../theme/ThemeContext';
 
 export interface DataCrew {
-  id: string
-  name: string
-  crewmen: CrewmanDTO[]
-  onClick: () => void
+  id: string;
+  name: string;
+  crewmen: CrewmanDTO[];
+  onClick: () => void;
 }
 
 const CardContentCrew: React.FC<DataCrew> = ({ name, crewmen, onClick }) => {
-  const theme = useContext(ThemeContext)
+  const theme = useContext(ThemeContext);
 
   const handleClick = () => {
-    onClick()
-  }
+    onClick();
+  };
 
   const crewmenSection = crewmen.map(item => {
     const crewmanInfo = (
@@ -26,9 +26,9 @@ const CardContentCrew: React.FC<DataCrew> = ({ name, crewmen, onClick }) => {
           <strong>Patent:</strong> {item.patent}
         </p>
       </React.Fragment>
-    )
-    return crewmanInfo
-  })
+    );
+    return crewmanInfo;
+  });
 
   return (
     <div
@@ -47,7 +47,7 @@ const CardContentCrew: React.FC<DataCrew> = ({ name, crewmen, onClick }) => {
         <div>{crewmenSection}</div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export { CardContentCrew }
+export { CardContentCrew };
