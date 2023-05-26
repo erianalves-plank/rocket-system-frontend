@@ -8,7 +8,7 @@ import GetLaunchs from '../mockedData/dataLaunch.tsx'
 import { LaunchDTO } from '../dtos/LaunchDTO.tsx'
 import { Modal } from 'antd'
 import { FormLaunch } from '../components/forms/FormLaunch.tsx'
-import { API_BASE_URL } from '../api/api.ts'
+import { API_BASE_URL, getCrews, getRockets } from '../api/api.ts'
 import axios from 'axios'
 
 const Launch = () => {
@@ -28,14 +28,45 @@ const Launch = () => {
     setLaunches(launchesList);
   }
 
-  const postLaunch = async (launch: Partial<LaunchDTO>) => {
-    const response = await axios.post(API_BASE_URL + 'launch', launch);
+  const postLaunch = async (launch: Partial<LaunchDTO>, rocketName: string, crewName: string) => {
+    const rocketsList = await getRockets();
+    const crewsList = await getCrews();
+
+
+    const rocketId = (rocketsList.find(rocket => rocket['name'] === rocketName))?.id;
+    const crewId = (crewsList.find(crew => crew['name'] === crewName))?.id;
+
+    const launchPost = {
+      launchCode: launch.launchCode,
+      date: launch.date,
+      success: launch.success,
+      rocketId: rocketId,
+      crewId: crewId
+    }
+
+    const response = await axios.post(API_BASE_URL + 'launch', launchPost);
     fetchLaunches();
     console.log('About the post operation ', response);
   }
 
-  const updateLaunch = async (id: string, launch: Partial<LaunchDTO>) => {
-    const response = await axios.put(API_BASE_URL + `launch/${id}`, launch);
+  const updateLaunch = async (id: string, launch: Partial<LaunchDTO>, rocketName: string, crewName: string) => {
+
+    const rocketsList = await getRockets();
+    const crewsList = await getCrews();
+
+
+    const rocketId = (rocketsList.find(rocket => rocket['name'] === rocketName))?.id;
+    const crewId = (crewsList.find(crew => crew['name'] === crewName))?.id;
+
+    const launchUpdate = {
+      launchCode: launch.launchCode,
+      date: launch.date,
+      success: launch.success,
+      rocketId: rocketId,
+      crewId: crewId
+    }
+
+    const response = await axios.put(API_BASE_URL + `launch/${id}`, launchUpdate);
     fetchLaunches();
     console.log('About the put operation ', response);
   }
@@ -85,37 +116,38 @@ const Launch = () => {
     return launchId
   }
 
-  const handleCreateLaunch = (launch: Partial<LaunchDTO>) => {
-    postLaunch(launch);
+  const handleCreateLaunch = (launch: Partial<LaunchDTO>, rocketName: string, crewName: string) => {
+    postLaunch(launch, rocketName, crewName);
     setIsModalOpen(false);
   }
 
-  const handleUpdateLaunch = (launch: Partial<LaunchDTO>) => {
+  const handleUpdateLaunch = (launch: Partial<LaunchDTO>, rocketName: string, crewName: string) => {
     const launchId = launchSelected
-    updateLaunch(launchId, launch);
+    updateLaunch(launchId, launch, rocketName, crewName);
     setIsModalOpen(false);
   }
-
-  const cardsLaunch = GetLaunchs().map(item => {
-    return (
-      <CardContentLaunch
-        key={item.id}
-        id={item.id}
-        launchCode={item.launchCode}
-        date={item.date}
-        success={item.success}
-        rocket={item.rocket}
-        crew={item.crew}
-        onClick={() => handleCardClick(item)}
-      />
-    )
-  })
 
   return (
     <div style={theme.layoutContentPage as React.CSSProperties}>
       <NavbarContentPages entityType="launch" />
       <main style={theme.containerContentPage as React.CSSProperties}>
-        <div style={theme.divContent as React.CSSProperties}>{cardsLaunch}</div>
+        <div style={theme.divContent as React.CSSProperties}>
+          {
+            launches.map(item => {
+              return (
+                <CardContentLaunch
+                  key={item.id}
+                  id={item.id}
+                  launchCode={item.launchCode}
+                  date={item.date}
+                  success={item.success}
+                  rocket={item.rocket}
+                  crew={item.crew}
+                  onClick={() => handleCardClick(item)}
+                />
+              )
+            })}
+        </div>
         <ButtonsManageResource
           handleClick={handleOpenModal}
           handleClickDelete={handleDeleteLaunch}
@@ -128,7 +160,7 @@ const Launch = () => {
           onCancel={handleCancel}
           style={{ textAlign: 'center' }}
         >
-          {sendDataForm ? <FormLaunch launch={formData} handleOperationLaunch={handleUpdateLaunch} /> : <FormLaunch handleOperationLaunch={handleCreateLaunch}/>}
+          {sendDataForm ? <FormLaunch launch={formData} handleOperationLaunch={handleUpdateLaunch} /> : <FormLaunch handleOperationLaunch={handleCreateLaunch} />}
         </Modal>
       </main>
       <Footer />

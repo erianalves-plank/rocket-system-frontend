@@ -4,7 +4,16 @@ import { LaunchDTO } from '../../dtos/LaunchDTO'
 
 type LaunchFormData = {
   launch?: LaunchDTO
-  handleOperationLaunch: (data: Partial<LaunchDTO>) => void;
+  handleOperationLaunch: (data: Partial<LaunchDTO>, rocketName: string, crewName: string) => void;
+}
+
+type LaunchFormReturn = {
+  name: string;
+  launchCode: string;
+  date: string;
+  success: boolean;
+  rocketName: string;
+  crewName: string;
 }
 
 const onFinish = (values: any) => {
@@ -28,10 +37,10 @@ const FormLaunch: React.FC<LaunchFormData> = ({ launch, handleOperationLaunch })
     setChecked(value)
   }
 
-  const dataSubmitted = (values: Partial<LaunchDTO>) => {
+  const dataSubmitted = (values: LaunchFormReturn) => {
     values['success'] = checked;
     console.log('values ', values);
-    handleOperationLaunch(values);
+    handleOperationLaunch(values, values.rocketName, values.crewName);
   }
 
   useEffect(() => {
@@ -40,8 +49,8 @@ const FormLaunch: React.FC<LaunchFormData> = ({ launch, handleOperationLaunch })
       form.setFieldsValue({
         launchCode: launch.launchCode,
         date: launch.date,
-        rocketId: launch.rocket.name,
-        crewId: launch.crew.name,
+        rocketName: launch.rocket.name,
+        crewName: launch.crew.name,
       })
       handleSetSwitchValue(launch.success)
     } else form.resetFields()
@@ -76,7 +85,7 @@ const FormLaunch: React.FC<LaunchFormData> = ({ launch, handleOperationLaunch })
 
       <Form.Item
         label="Rocket"
-        name="rocketId"
+        name="rocketName"
         rules={[
           {
             required: true,
@@ -106,7 +115,7 @@ const FormLaunch: React.FC<LaunchFormData> = ({ launch, handleOperationLaunch })
 
       <Form.Item
         label="Crew"
-        name="crewId"
+        name="crewName"
         rules={[
           { required: false, message: 'Please input the crew for the launch!' },
         ]}
