@@ -53,7 +53,7 @@ const CardContentLaunch: React.FC<DataLaunch> = ({
           borderBottom: '4px solid #5e60ce',
         }}
       >
-        Details
+        Technical Information
       </h3>
       <div>
         <p style={{ margin: 0, paddingLeft: '4px' }}>

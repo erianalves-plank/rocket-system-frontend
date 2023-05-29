@@ -109,6 +109,7 @@ const Launch = () => {
           open={isModalOpen}
           onOk={handleOk}
           onCancel={handleCancel}
+          footer={null}
           style={{ textAlign: 'center' }}
         >
           {sendDataForm ? (
@@ -120,6 +121,8 @@ const Launch = () => {
             <FormLaunch handleOperationLaunch={handleCreateLaunch} />
           )}
         </Modal>
+
+
       </main>
       <Footer />
     </div>

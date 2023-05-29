@@ -7,22 +7,11 @@ body,
     display: flex;
     flex-direction: column;
     color: white;
-    font-family: 'Ysabeau', sans-serif;
+    /* font-family: 'Ysabeau', sans-serif; */
+    /* font-family: 'Forum', cursive; */
+    font-family: 'Oxanium', cursive;
     min-height: 100vh;
 }
-
-/* nav {
-    background: #5e548e;
-    display: flex;
-    justify-content: space-evenly;
-}
-
-li {
-    list-style: none;
-    display: inline-block;
-    padding: 0 30px;
-    font-size: 20px;
-} */
 
 #hero {
     background: url('../imgs/space-with-rocket.jpg');
@@ -58,29 +47,8 @@ main {
     text-align: center;
 }
 
-.flex-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    margin: 10px;
-    /*  border: 4px  #231942; */
-    border: 2px solid #be95c4;
-    background: linear-gradient(to right, #9f86c0, #e0b1cb, #9f86c0);
-    padding: 0px 5px 0px 5px;
-    border-radius: 4px;
-}
 
 p {
     max-width: 300px;
     text-align: justify;
-}
-
-.footer {
-    text-align: center;
-    background-color: #5e60ce;
-    flex-shrink: 0;
-    display: flex;
-    justify-content: center;
-    font-size: 15px;
 }

@@ -32,7 +32,7 @@ const Root = () => {
     <div style={outerDivStyle}>
       <Navbar />
       <Header />
-      <main className="container" style={{ flex: 1 }}>
+      <main style={theme.container as React.CSSProperties}>
         {cardsMainPage}
       </main>
       <Footer />

@@ -19,10 +19,10 @@ const Rocket = () => {
   const [modalTitle, setModalTitle] = useState('');
   const [sendDataForm, setSendDataForm] = useState(false);
   const [rocketSelected, setRocketSelected] = useState('');
-  const { rockets, fetchRockets, createRocket, updateRocket, deleteRocket  } = useRocket();
+  const { rockets, fetchRockets, createRocket, updateRocket, deleteRocket } = useRocket();
   const [formData, setFormData] = useState<RocketDTO>();
 
-  
+
   useEffect(() => {
     fetchRockets();
   }, []);
@@ -92,27 +92,27 @@ const Rocket = () => {
           handleClick={handleOpenModal}
           handleClickDelete={handleDeleteRocket}
         />
-        <div style={{background: '#fbc345', width: '100%'}}>
 
-          <Modal
-            title={modalTitle}
-            open={isModalOpen}
-            footer={null}
-            onCancel={handleCancel}
-            style={{ textAlign: 'center', background: '#666adf' }}
-          >
-            {sendDataForm ? (
-              <FormRocket
-              /* formRef={formRef} */ rocket={formData}
-                handleOperationRocket={handleUpdateRocket}
-              />
-            ) : (
-              <FormRocket
-              /* formRef={formRef} */ handleOperationRocket={handleCreateRocket}
-              />
-            )}
-          </Modal>
-        </div>
+
+        <Modal
+          title={modalTitle}
+          open={isModalOpen}
+          footer={null}
+          onCancel={handleCancel}
+          style={{ textAlign: 'center' }}
+        >
+          {sendDataForm ? (
+            <FormRocket
+              rocket={formData}
+              handleOperationRocket={handleUpdateRocket}
+            />
+          ) : (
+            <FormRocket
+              handleOperationRocket={handleCreateRocket}
+            />
+          )}
+        </Modal>
+
       </main>
       <Footer />
     </div>

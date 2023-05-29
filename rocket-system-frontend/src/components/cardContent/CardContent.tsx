@@ -18,9 +18,9 @@ const CardContent: React.FC<DataRocket> = ({ name, onClick }) => {
       style={theme.flexItemCrew as React.CSSProperties}
       onClick={handleClick}
     >
-      <h3 style={theme.flexItemTitle}>Details</h3>
-      <div>
-        <p>Name: {name}</p>
+      <h4 style={theme.flexItemTitle}>Technical Information</h4>
+      <div style={{paddingLeft: '15px'}}>
+        <p><strong>Name:</strong> {name}</p>
       </div>
     </div>
   );

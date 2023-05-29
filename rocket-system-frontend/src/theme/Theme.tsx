@@ -35,14 +35,14 @@ const theme = {
     height: 'auto',
   },
   hero: {
-    background: "url('../imgs/space-with-rocket.jpg')",
+    background: "url('../imgs/5438849.jpg')",
     textAlign: 'center',
     backgroundSize: 'cover',
     padding: '50px 0 10px 0',
     flexGrow: 1,
   },
   main: {
-    backgroundColor: 'linear-gradient(#9f86c0, #e0b1cb)',
+    backgroundColor: 'linear-gradient(#858ae3, #9163cb)',
     color: '#191825',
     flexGrow: 1,
   },
@@ -55,20 +55,21 @@ const theme = {
   },
   container: {
     fontSize: '18px',
-    background: 'linear-gradient(#9f86c0, #e0b1cb)',
+    background: 'linear-gradient(#858ae3, #9163cb)',
     display: 'flex',
     justifyContent: 'space-evenly',
     margin: '5px 1px',
     flexWrap: 'wrap',
     textAlign: 'center',
+    flex: '1'
   },
   containerContentPage: {
     fontSize: '20px',
-    background: 'linear-gradient(#9f86c0, #e0b1cb)',
+    background: 'linear-gradient(#858ae3, #9163cb)',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    margin: '5px 1px',
+    /* margin: '5px 1px', */
     textAlign: 'start',
   },
   divContent: {
@@ -83,22 +84,24 @@ const theme = {
     alignItems: 'center',
     textAlign: 'center',
     margin: '10px',
-    border: '2px solid #be95c4',
-    background: 'linear-gradient(to right, #9f86c0, #e0b1cb, #9f86c0)',
+    border: '2px solid #7161ef',
+    background: 'linear-gradient(to right, #7161ef, #957fef, #7161ef)',
     padding: '0px 5px',
     borderRadius: '4px',
     boxShadow: '2px 2px 4px rgba(0, 0, 0, 0.2)',
+    color: '#fff'
   },
   flexItemCrew: {
     display: 'flex',
     flexDirection: 'column',
     textAlign: 'center',
-    border: '2px solid #be95c4',
+    border: '2px solid #613dc1',
     width: '400px',
     margin: '15px auto',
     borderRadius: '4px',
     boxShadow: '2px 2px 4px rgba(0, 0, 0, 0.2)',
-    background: 'linear-gradient(to right, #be95c4, #e0b1cb, #be95c4)',
+    background: 'linear-gradient(to right, #613dc1, #97dffc, #613dc1)',
+    color: '#fff'
   },
   flexItemTitle: {
     marginTop: '2px',
@@ -124,18 +127,18 @@ const theme = {
   },
   divBtn: {
     marginTop: 'auto',
-    justifyContent: 'space-around',
-    width: '100%',
+    paddingBotton: '10px'
+
   },
   btn: {
     fontSize: '16px',
     fontWeight: '600',
     padding: 'auto 10px',
-    border: '2px solid #231942',
+    border: '1px solid #b9faf8',
     borderRadius: '5px',
-    background: '#e0b1cb',
+    background: '#4361ee',
     color: 'white',
-    margin: 'auto 15px',
+    margin: 'auto 15px 10px 15px',
     width: '100px',
   },
 };

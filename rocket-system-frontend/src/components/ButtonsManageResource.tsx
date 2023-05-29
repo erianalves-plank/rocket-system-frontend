@@ -13,10 +13,6 @@ const ButtonsManageResource: React.FC<ChildComponentProps> = ({
 }) => {
   const theme = useContext(ThemeContext);
 
-  const style = {
-    marginTop: theme.divBtn.marginTop,
-  };
-
   const handleClickAddButton = () => {
     handleClick('Add');
   };
@@ -28,7 +24,7 @@ const ButtonsManageResource: React.FC<ChildComponentProps> = ({
   };
 
   return (
-    <div style={style}>
+    <div style={theme.divBtn}>
       <Button style={theme.btn} size="large" onClick={handleClickAddButton}>
         Add
       </Button>
