@@ -1,14 +1,15 @@
 import { Modal } from 'antd';
-import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
-import { API_BASE_URL, getCrews, getRockets } from '../api/api.ts';
 import { ButtonsManageResource } from '../components/ButtonsManageResource';
 import { Footer } from '../components/Footer';
 import { NavbarContentPages } from '../components/NavbarContentPages';
 import { CardContentLaunch } from '../components/cardContent/CardContentLaunch';
 import { FormLaunch } from '../components/forms/FormLaunch.tsx';
 import { LaunchDTO } from '../dtos/LaunchDTO.tsx';
+import { delLaunch, getLaunchs, postLaunch, putLaunch } from '../services/LaunchService.ts';
 import { ThemeContext } from '../theme/ThemeContext.tsx';
+import { getRockets } from '../services/RocketService.ts';
+import { getCrews } from '../services/CrewService.ts';
 
 const Launch = () => {
   const theme = useContext(ThemeContext);
@@ -22,12 +23,11 @@ const Launch = () => {
   const [formData, setFormData] = useState<LaunchDTO>();
 
   const fetchLaunches = async () => {
-    const data = await axios.get<LaunchDTO[]>(API_BASE_URL + `launch`);
-    const launchesList = data.data;
-    setLaunches(launchesList);
+    const launchData = await getLaunchs();//await axios.get<LaunchDTO[]>(API_BASE_URL + `launch`);
+    setLaunches(launchData);
   };
 
-  const postLaunch = async (
+  const createLaunch = async (
     launch: Partial<LaunchDTO>,
     rocketName: string,
     crewName: string
@@ -48,7 +48,7 @@ const Launch = () => {
       crewId: crewId,
     };
 
-    const response = await axios.post(API_BASE_URL + 'launch', launchPost);
+    const response = await postLaunch(launchPost);//await axios.post(API_BASE_URL + 'launch', launchPost);
     fetchLaunches();
     console.log('About the post operation ', response);
   };
@@ -75,16 +75,13 @@ const Launch = () => {
       crewId: crewId,
     };
 
-    const response = await axios.put(
-      API_BASE_URL + `launch/${id}`,
-      launchUpdate
-    );
+    const response = await putLaunch(id, launchUpdate);
     fetchLaunches();
     console.log('About the put operation ', response);
   };
 
   const deleteLaunch = async (id: string) => {
-    await axios.delete<void>(API_BASE_URL + `launch/${id}`);
+    await delLaunch(id);//axios.delete<void>(API_BASE_URL + `launch/${id}`);
     fetchLaunches();
   };
 
@@ -133,7 +130,7 @@ const Launch = () => {
     rocketName: string,
     crewName: string
   ) => {
-    postLaunch(launch, rocketName, crewName);
+    createLaunch(launch, rocketName, crewName);
     setIsModalOpen(false);
   };
 

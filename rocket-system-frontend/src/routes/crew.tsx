@@ -1,7 +1,5 @@
 import { Modal } from 'antd';
-import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
-import { API_BASE_URL, getCrewmen } from '../api/api.ts';
 import { ButtonsManageResource } from '../components/ButtonsManageResource';
 import { Footer } from '../components/Footer';
 import { NavbarContentPages } from '../components/NavbarContentPages';
@@ -9,6 +7,8 @@ import { CardContentCrew } from '../components/cardContent/CardContentCrew';
 import { FormCrew } from '../components/forms/FormCrew.tsx';
 import '../css/Page.css';
 import { CrewDTO } from '../dtos/CrewDTO.tsx';
+import { delCrew, getCrews, postCrew, putCrew } from '../services/CrewService.ts';
+import { getCrewmen } from '../services/CrewmanService.ts';
 import { ThemeContext } from '../theme/ThemeContext.tsx';
 
 function Crew() {
@@ -28,12 +28,11 @@ function Crew() {
     const crewmenNames = crewmen.map(item => item.name);
     setCrewmenDB(crewmenNames);
 
-    const data = await axios.get<CrewDTO[]>(API_BASE_URL + `crew`);
-    const crewList = data.data;
-    setCrews(crewList);
+    const dataCrew = await getCrews();//axios.get<CrewDTO[]>(API_BASE_URL + `crew`);
+    setCrews(dataCrew);
   };
 
-  const postCrew = async (crew: Partial<CrewDTO>, crewmenNames: string[]) => {
+  const createCrew = async (crew: Partial<CrewDTO>, crewmenNames: string[]) => {
     const crewmenList = await getCrewmen();
 
     const matchedValues = new Set(crewmenNames);
@@ -49,7 +48,7 @@ function Crew() {
       crewmenIds: crewmenIds,
     };
 
-    const response = await axios.post(API_BASE_URL + 'crew', crewPost);
+    const response = await postCrew(crewPost);//axios.post(API_BASE_URL + 'crew', crewPost);
     fetchCrews();
     console.log('About the post operation ', response);
   };
@@ -73,13 +72,13 @@ function Crew() {
       name: crew.name,
       crewmenIds: crewmenIds,
     };
-    const response = await axios.put(API_BASE_URL + `crew/${id}`, crewUpdate);
+    const response = await putCrew(id, crewUpdate);//axios.put(API_BASE_URL + `crew/${id}`, crewUpdate);
     fetchCrews();
     console.log('About the put operation ', response);
   };
 
   const deleteCrew = async (id: string) => {
-    await axios.delete<void>(API_BASE_URL + `crew/${id}`);
+    await delCrew(id);//axios.delete<void>(API_BASE_URL + `crew/${id}`);
     fetchCrews();
   };
 
@@ -122,7 +121,7 @@ function Crew() {
     return crewId;
   };
   const handleCreateCrew = (crew: Partial<CrewDTO>, crewmenNames: string[]) => {
-    postCrew(crew, crewmenNames);
+    createCrew(crew, crewmenNames);
     setIsModalOpen(false);
   };
 

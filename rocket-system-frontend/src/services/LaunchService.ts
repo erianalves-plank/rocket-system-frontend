@@ -1,12 +1,12 @@
 import axios from 'axios';
-import { RocketDTO } from '../dtos/RocketDTO';
+import { LaunchDTO } from '../dtos/LaunchDTO';
 
 const API_BASE_URL = 'http://localhost:8080/'; // Replace with your API base URL
-const entityPath = 'rocket';
+const entityPath = 'launch';
 
-const getRockets = async () => {
+const getLaunchs = async () => {
   try {
-    const response = await axios.get<RocketDTO[]>(API_BASE_URL + entityPath);
+    const response = await axios.get<LaunchDTO[]>(API_BASE_URL + entityPath);
     return response.data;
   } catch (error) {
     console.log('We got an error: ', error);
@@ -14,9 +14,9 @@ const getRockets = async () => {
   }
 };
 
-const postRocket = async (Rocket: Partial<RocketDTO>) => {
+const postLaunch = async (Launch: Partial<LaunchDTO>) => {
   try {
-    const response = await axios.post(API_BASE_URL + entityPath, Rocket);
+    const response = await axios.post(API_BASE_URL + entityPath, Launch);
     console.log('About the post operation ', response);
   } catch (error) {
     console.log(error);
@@ -24,17 +24,17 @@ const postRocket = async (Rocket: Partial<RocketDTO>) => {
 
 };
 
-const putRocket = async (id: string, Rocket: Partial<RocketDTO>) => {
+const putLaunch = async (id: string, Launch: Partial<LaunchDTO>) => {
   
   try {
-    const response = await axios.put(API_BASE_URL + entityPath + `/${id}`, Rocket);
+    const response = await axios.put(API_BASE_URL + entityPath + `/${id}`, Launch);
     console.log('About the put operation ', response);
   } catch (error) {
     console.log(error)    
   }
 };
 
-const delRocket = async (id: string) => {
+const delLaunch = async (id: string) => {
   try {
     await axios.delete<void>(API_BASE_URL + entityPath + `/${id}`);
   } catch (error) {
@@ -42,4 +42,4 @@ const delRocket = async (id: string) => {
   }
 };
 
-export { getRockets, postRocket, putRocket, delRocket };
+export { getLaunchs, postLaunch, putLaunch, delLaunch };

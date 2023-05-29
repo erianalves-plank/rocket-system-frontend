@@ -1,15 +1,13 @@
+import { Modal } from 'antd';
+import { useContext, useEffect, useState } from 'react';
 import { ButtonsManageResource } from '../components/ButtonsManageResource';
 import { Footer } from '../components/Footer';
 import { NavbarContentPages } from '../components/NavbarContentPages';
 import { CardContentCrewman } from '../components/cardContent/CardContentCrewman';
-import { ThemeContext } from '../theme/ThemeContext.tsx';
-import { useContext, useEffect, useState } from 'react';
-import GetCremwen from '../mockedData/dataCrewman.tsx';
-import { Modal } from 'antd';
 import { FormCrewman } from '../components/forms/FormCrewman.tsx';
 import { CrewmanDTO } from '../dtos/CrewmanDTO.tsx';
-import { API_BASE_URL } from '../api/api.ts';
-import axios from 'axios';
+import { delCrewman, getCrewmen, postCrewman, putCrewman } from '../services/CrewmanService.ts';
+import { ThemeContext } from '../theme/ThemeContext.tsx';
 
 const Crewman = () => {
   const theme = useContext(ThemeContext);
@@ -23,25 +21,24 @@ const Crewman = () => {
   const [formData, setFormData] = useState<CrewmanDTO>();
 
   const fetchCrewmen = async () => {
-    const data = await axios.get<CrewmanDTO[]>(API_BASE_URL + `crewman`);
-    const crewmansList = data.data;
-    setCrewmen(crewmansList);
+    const dataCrewmen = await getCrewmen();//await axios.get<CrewmanDTO[]>(API_BASE_URL + `crewman`);
+    setCrewmen(dataCrewmen);
   };
 
-  const postCrewman = async (crewman: Partial<CrewmanDTO>) => {
-    const response = await axios.post(API_BASE_URL + 'crewman', crewman);
+  const createCrewman = async (crewman: Partial<CrewmanDTO>) => {
+    const response = await postCrewman(crewman);//axios.post(API_BASE_URL + 'crewman', crewman);
     fetchCrewmen();
     console.log('About the post operation ', response);
   };
 
   const updateCrewman = async (id: string, crewman: Partial<CrewmanDTO>) => {
-    const response = await axios.put(API_BASE_URL + `crewman/${id}`, crewman);
+    const response = await putCrewman(id, crewman);//axios.put(API_BASE_URL + `crewman/${id}`, crewman);
     fetchCrewmen();
     console.log('About the put operation ', response);
   };
 
   const deleteCrewman = async (id: string) => {
-    await axios.delete<void>(API_BASE_URL + `crewman/${id}`);
+    await delCrewman(id);//axios.delete<void>(API_BASE_URL + `crewman/${id}`);
     fetchCrewmen();
   };
 
@@ -84,7 +81,7 @@ const Crewman = () => {
   };
 
   const handleCreateCrewman = (crewman: Partial<CrewmanDTO>) => {
-    postCrewman(crewman);
+    createCrewman(crewman);
     setIsModalOpen(false);
   };
 

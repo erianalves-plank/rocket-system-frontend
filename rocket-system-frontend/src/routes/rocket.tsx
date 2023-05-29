@@ -10,6 +10,7 @@ import axios from 'axios';
 import { API_BASE_URL, getRockets } from '../api/api.ts';
 import { FormRocket } from '../components/forms/FormRocket.tsx';
 import { RocketDTO } from '../dtos/RocketDTO.tsx';
+import { delRocket, postRocket, putRocket } from '../services/RocketService.ts';
 
 const Rocket = () => {
   const theme = useContext(ThemeContext);
@@ -25,25 +26,23 @@ const Rocket = () => {
 
   const fetchRockets = async () => {
     const rocketsData = await getRockets();
-/*     const data = await axios.get<RocketDTO[]>(API_BASE_URL + `rocket`);
-    const rocketsList = data.data; */
     setRockets(rocketsData);
   };
 
-  const postRocket = async (rocket: Partial<RocketDTO>) => {
-    const response = await axios.post(API_BASE_URL + 'rocket', rocket);
+  const createRocket = async (rocket: Partial<RocketDTO>) => {
+    const response = await postRocket(rocket);//axios.post(API_BASE_URL + 'rocket', rocket);
     fetchRockets();
     console.log('About the post operation ', response);
   };
 
   const updateRocket = async (id: string, rocket: Partial<RocketDTO>) => {
-    const response = await axios.put(API_BASE_URL + `rocket/${id}`, rocket);
+    const response = await putRocket(id, rocket); 
     fetchRockets();
     console.log('About the put operation ', response);
   };
 
   const deleteRocket = async (id: string) => {
-    await axios.delete<void>(API_BASE_URL + `rocket/${id}`);
+    await delRocket(id);//axios.delete<void>(API_BASE_URL + `rocket/${id}`);
     fetchRockets();
   };
 
@@ -84,7 +83,7 @@ const Rocket = () => {
   };
 
   const handleCreateRocket = (rocket: Partial<RocketDTO>) => {
-    postRocket(rocket);
+    createRocket(rocket);
     setIsModalOpen(false);
   };
 
