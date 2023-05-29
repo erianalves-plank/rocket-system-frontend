@@ -37,31 +37,34 @@ const FormRocket: React.FC<RocketFormData> = ({
   };
 
   return (
-    <Form
-      form={form}
-      name="basic"
-      labelCol={{ span: 4 }}
-      wrapperCol={{ span: 16 }}
-      style={{ maxWidth: 600 }}
-      onFinish={dataSubmitted}
-      onFinishFailed={onFinishFailed}
-      autoComplete="off"
-      /* ref={formRef} */
-    >
-      <Form.Item
-        label="Name"
-        name="name"
-        rules={[{ required: true, message: 'Please input the rocket name!' }]}
-      >
-        <Input />
-      </Form.Item>
+    <div style={{background: '#bbc992', width: '100%'}}>
 
-      <Form.Item wrapperCol={{ offset: 8, span: 8 }}>
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
-      </Form.Item>
-    </Form>
+      <Form
+        form={form}
+        name="basic"
+        labelCol={{ span: 4 }}
+        wrapperCol={{ span: 16 }}
+        style={{ maxWidth: 600}}
+        onFinish={dataSubmitted}
+        onFinishFailed={onFinishFailed}
+        autoComplete="off"
+      /* ref={formRef} */
+      >
+        <Form.Item
+          label="Name"
+          name="name"
+          rules={[{ required: true, message: 'Please input the rocket name!' }]}
+        >
+          <Input />
+        </Form.Item>
+
+        <Form.Item wrapperCol={{ offset: 8, span: 8 }}>
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+        </Form.Item>
+      </Form>
+    </div>
   );
 };
 

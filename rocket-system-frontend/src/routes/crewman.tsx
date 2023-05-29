@@ -6,8 +6,8 @@ import { NavbarContentPages } from '../components/NavbarContentPages';
 import { CardContentCrewman } from '../components/cardContent/CardContentCrewman';
 import { FormCrewman } from '../components/forms/FormCrewman.tsx';
 import { CrewmanDTO } from '../dtos/CrewmanDTO.tsx';
-import { delCrewman, getCrewmen, postCrewman, putCrewman } from '../services/CrewmanService.ts';
 import { ThemeContext } from '../theme/ThemeContext.tsx';
+import { useCrewman } from '../hooks/useCrewman.tsx';
 
 const Crewman = () => {
   const theme = useContext(ThemeContext);
@@ -16,31 +16,10 @@ const Crewman = () => {
   const [modalTitle, setModalTitle] = useState('');
   const [sendDataForm, setSendDataForm] = useState(false);
   const [crewmanSelected, setCrewmanSelected] = useState('');
-  const [crewmen, setCrewmen] = useState<CrewmanDTO[]>([]);
-
+  const { crewmen, fetchCrewmen, createCrewman, updateCrewman, deleteCrewman  } = useCrewman();
   const [formData, setFormData] = useState<CrewmanDTO>();
 
-  const fetchCrewmen = async () => {
-    const dataCrewmen = await getCrewmen();//await axios.get<CrewmanDTO[]>(API_BASE_URL + `crewman`);
-    setCrewmen(dataCrewmen);
-  };
 
-  const createCrewman = async (crewman: Partial<CrewmanDTO>) => {
-    const response = await postCrewman(crewman);//axios.post(API_BASE_URL + 'crewman', crewman);
-    fetchCrewmen();
-    console.log('About the post operation ', response);
-  };
-
-  const updateCrewman = async (id: string, crewman: Partial<CrewmanDTO>) => {
-    const response = await putCrewman(id, crewman);//axios.put(API_BASE_URL + `crewman/${id}`, crewman);
-    fetchCrewmen();
-    console.log('About the put operation ', response);
-  };
-
-  const deleteCrewman = async (id: string) => {
-    await delCrewman(id);//axios.delete<void>(API_BASE_URL + `crewman/${id}`);
-    fetchCrewmen();
-  };
 
   useEffect(() => {
     fetchCrewmen();

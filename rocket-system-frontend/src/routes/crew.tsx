@@ -7,8 +7,7 @@ import { CardContentCrew } from '../components/cardContent/CardContentCrew';
 import { FormCrew } from '../components/forms/FormCrew.tsx';
 import '../css/Page.css';
 import { CrewDTO } from '../dtos/CrewDTO.tsx';
-import { delCrew, getCrews, postCrew, putCrew } from '../services/CrewService.ts';
-import { getCrewmen } from '../services/CrewmanService.ts';
+import { useCrew } from '../hooks/useCrew.tsx';
 import { ThemeContext } from '../theme/ThemeContext.tsx';
 
 function Crew() {
@@ -18,69 +17,9 @@ function Crew() {
   const [modalTitle, setModalTitle] = useState('');
   const [sendDataForm, setSendDataForm] = useState(false);
   const [crewSelected, setCrewSelected] = useState('');
-  const [crews, setCrews] = useState<CrewDTO[]>([]);
-  const [crewmenDB, setCrewmenDB] = useState<string[]>([]);
-
+  const { crews, crewmenDB, fetchCrews, createCrew, updateCrew, deleteCrew  } = useCrew();
+  
   const [formData, setFormData] = useState<CrewDTO>();
-
-  const fetchCrews = async () => {
-    const crewmen = await getCrewmen();
-    const crewmenNames = crewmen.map(item => item.name);
-    setCrewmenDB(crewmenNames);
-
-    const dataCrew = await getCrews();//axios.get<CrewDTO[]>(API_BASE_URL + `crew`);
-    setCrews(dataCrew);
-  };
-
-  const createCrew = async (crew: Partial<CrewDTO>, crewmenNames: string[]) => {
-    const crewmenList = await getCrewmen();
-
-    const matchedValues = new Set(crewmenNames);
-    const crewmenFiltered = crewmenList.filter(
-      crewman =>
-        crewmenNames.includes(crewman['name']) &&
-        matchedValues.delete(crewman['name'])
-    );
-    const crewmenIds = crewmenFiltered.map(crewman => crewman.id);
-
-    const crewPost = {
-      name: crew.name,
-      crewmenIds: crewmenIds,
-    };
-
-    const response = await postCrew(crewPost);//axios.post(API_BASE_URL + 'crew', crewPost);
-    fetchCrews();
-    console.log('About the post operation ', response);
-  };
-
-  const updateCrew = async (
-    id: string,
-    crew: Partial<CrewDTO>,
-    crewmenNames: string[]
-  ) => {
-    const crewmenList = await getCrewmen();
-
-    const matchedValues = new Set(crewmenNames);
-    const crewmenFiltered = crewmenList.filter(
-      crewman =>
-        crewmenNames.includes(crewman['name']) &&
-        matchedValues.delete(crewman['name'])
-    );
-    const crewmenIds = crewmenFiltered.map(crewman => crewman.id);
-
-    const crewUpdate = {
-      name: crew.name,
-      crewmenIds: crewmenIds,
-    };
-    const response = await putCrew(id, crewUpdate);//axios.put(API_BASE_URL + `crew/${id}`, crewUpdate);
-    fetchCrews();
-    console.log('About the put operation ', response);
-  };
-
-  const deleteCrew = async (id: string) => {
-    await delCrew(id);//axios.delete<void>(API_BASE_URL + `crew/${id}`);
-    fetchCrews();
-  };
 
   useEffect(() => {
     fetchCrews();

@@ -6,11 +6,9 @@ import { CardContent } from '../components/cardContent/CardContent.tsx';
 import { ThemeContext } from '../theme/ThemeContext.tsx';
 
 import { Modal } from 'antd';
-import axios from 'axios';
-import { API_BASE_URL, getRockets } from '../api/api.ts';
 import { FormRocket } from '../components/forms/FormRocket.tsx';
 import { RocketDTO } from '../dtos/RocketDTO.tsx';
-import { delRocket, postRocket, putRocket } from '../services/RocketService.ts';
+import { useRocket } from '../hooks/useRocket.tsx';
 
 const Rocket = () => {
   const theme = useContext(ThemeContext);
@@ -21,31 +19,10 @@ const Rocket = () => {
   const [modalTitle, setModalTitle] = useState('');
   const [sendDataForm, setSendDataForm] = useState(false);
   const [rocketSelected, setRocketSelected] = useState('');
-  const [rockets, setRockets] = useState<RocketDTO[]>([]);
+  const { rockets, fetchRockets, createRocket, updateRocket, deleteRocket  } = useRocket();
   const [formData, setFormData] = useState<RocketDTO>();
 
-  const fetchRockets = async () => {
-    const rocketsData = await getRockets();
-    setRockets(rocketsData);
-  };
-
-  const createRocket = async (rocket: Partial<RocketDTO>) => {
-    const response = await postRocket(rocket);//axios.post(API_BASE_URL + 'rocket', rocket);
-    fetchRockets();
-    console.log('About the post operation ', response);
-  };
-
-  const updateRocket = async (id: string, rocket: Partial<RocketDTO>) => {
-    const response = await putRocket(id, rocket); 
-    fetchRockets();
-    console.log('About the put operation ', response);
-  };
-
-  const deleteRocket = async (id: string) => {
-    await delRocket(id);//axios.delete<void>(API_BASE_URL + `rocket/${id}`);
-    fetchRockets();
-  };
-
+  
   useEffect(() => {
     fetchRockets();
   }, []);
@@ -115,25 +92,27 @@ const Rocket = () => {
           handleClick={handleOpenModal}
           handleClickDelete={handleDeleteRocket}
         />
+        <div style={{background: '#fbc345', width: '100%'}}>
 
-        <Modal
-          title={modalTitle}
-          open={isModalOpen}
-          footer={null}
-          onCancel={handleCancel}
-          style={{ textAlign: 'center' }}
-        >
-          {sendDataForm ? (
-            <FormRocket
+          <Modal
+            title={modalTitle}
+            open={isModalOpen}
+            footer={null}
+            onCancel={handleCancel}
+            style={{ textAlign: 'center', background: '#666adf' }}
+          >
+            {sendDataForm ? (
+              <FormRocket
               /* formRef={formRef} */ rocket={formData}
-              handleOperationRocket={handleUpdateRocket}
-            />
-          ) : (
-            <FormRocket
+                handleOperationRocket={handleUpdateRocket}
+              />
+            ) : (
+              <FormRocket
               /* formRef={formRef} */ handleOperationRocket={handleCreateRocket}
-            />
-          )}
-        </Modal>
+              />
+            )}
+          </Modal>
+        </div>
       </main>
       <Footer />
     </div>
