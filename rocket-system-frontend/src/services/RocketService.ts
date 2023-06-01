@@ -21,16 +21,17 @@ const postRocket = async (Rocket: Partial<RocketDTO>) => {
   } catch (error) {
     console.log(error);
   }
-
 };
 
 const putRocket = async (id: string, Rocket: Partial<RocketDTO>) => {
-  
   try {
-    const response = await axios.put(API_BASE_URL + entityPath + `/${id}`, Rocket);
+    const response = await axios.put(
+      API_BASE_URL + entityPath + `/${id}`,
+      Rocket
+    );
     console.log('About the put operation ', response);
   } catch (error) {
-    console.log(error)    
+    console.log(error);
   }
 };
 

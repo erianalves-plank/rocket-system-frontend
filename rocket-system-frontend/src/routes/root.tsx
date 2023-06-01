@@ -7,7 +7,7 @@ import data from '../mockedData/dataMainPage.tsx';
 import { ThemeContext } from '../theme/ThemeContext.tsx';
 
 const Root = () => {
-  const cardsMainPage = data.map(item => {
+  const cardsMainPage = data.map((item) => {
     return (
       <CardMainPage
         key={item.id}

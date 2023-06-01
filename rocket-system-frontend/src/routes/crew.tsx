@@ -17,13 +17,14 @@ function Crew() {
   const [modalTitle, setModalTitle] = useState('');
   const [sendDataForm, setSendDataForm] = useState(false);
   const [crewSelected, setCrewSelected] = useState('');
-  const { crews, crewmenDB, fetchCrews, createCrew, updateCrew, deleteCrew  } = useCrew();
-  
+  const { crews, crewmenDB, fetchCrews, createCrew, updateCrew, deleteCrew } =
+    useCrew();
+
   const [formData, setFormData] = useState<CrewDTO>();
 
   useEffect(() => {
     fetchCrews();
-  }, []);
+  }, [fetchCrews]);
 
   useEffect(() => {
     console.log('-> ', crews);
@@ -78,7 +79,7 @@ function Crew() {
 
       <main style={theme.containerContentPage as React.CSSProperties}>
         <div style={theme.divContent as React.CSSProperties}>
-          {crews.map(item => {
+          {crews.map((item) => {
             return (
               <CardContentCrew
                 key={item.id}

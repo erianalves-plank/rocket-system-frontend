@@ -16,13 +16,14 @@ const Launch = () => {
   const [modalTitle, setModalTitle] = useState('');
   const [sendDataForm, setSendDataForm] = useState(false);
   const [launchSelected, setLaunchSelected] = useState('');
-  const { launches, fetchLaunches, createLaunch, updateLaunch, deleteLaunch } = useLaunch();
+  const { launches, fetchLaunches, createLaunch, updateLaunch, deleteLaunch } =
+    useLaunch();
 
   const [formData, setFormData] = useState<LaunchDTO>();
 
   useEffect(() => {
     fetchLaunches();
-  }, []);
+  }, [fetchLaunches]);
 
   useEffect(() => {
     console.log('-> ', launches);
@@ -84,7 +85,7 @@ const Launch = () => {
       <NavbarContentPages entityType="launch" />
       <main style={theme.containerContentPage as React.CSSProperties}>
         <div style={theme.divContent as React.CSSProperties}>
-          {launches.map(item => {
+          {launches.map((item) => {
             return (
               <CardContentLaunch
                 key={item.id}
@@ -121,8 +122,6 @@ const Launch = () => {
             <FormLaunch handleOperationLaunch={handleCreateLaunch} />
           )}
         </Modal>
-
-
       </main>
       <Footer />
     </div>

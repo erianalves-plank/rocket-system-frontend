@@ -21,16 +21,17 @@ const postLaunch = async (Launch: Partial<LaunchDTO>) => {
   } catch (error) {
     console.log(error);
   }
-
 };
 
 const putLaunch = async (id: string, Launch: Partial<LaunchDTO>) => {
-  
   try {
-    const response = await axios.put(API_BASE_URL + entityPath + `/${id}`, Launch);
+    const response = await axios.put(
+      API_BASE_URL + entityPath + `/${id}`,
+      Launch
+    );
     console.log('About the put operation ', response);
   } catch (error) {
-    console.log(error)    
+    console.log(error);
   }
 };
 

@@ -21,16 +21,17 @@ const postCrew = async (Crew: Partial<CrewDTO>) => {
   } catch (error) {
     console.log(error);
   }
-
 };
 
 const putCrew = async (id: string, Crew: Partial<CrewDTO>) => {
-  
   try {
-    const response = await axios.put(API_BASE_URL + entityPath + `/${id}`, Crew);
+    const response = await axios.put(
+      API_BASE_URL + entityPath + `/${id}`,
+      Crew
+    );
     console.log('About the put operation ', response);
   } catch (error) {
-    console.log(error)    
+    console.log(error);
   }
 };
 

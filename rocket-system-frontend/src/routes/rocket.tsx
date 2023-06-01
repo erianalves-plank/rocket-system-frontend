@@ -13,19 +13,17 @@ import { useRocket } from '../hooks/useRocket.tsx';
 const Rocket = () => {
   const theme = useContext(ThemeContext);
 
-  /* const formRef = useRef<typeof Form>(null); */
-
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalTitle, setModalTitle] = useState('');
   const [sendDataForm, setSendDataForm] = useState(false);
   const [rocketSelected, setRocketSelected] = useState('');
-  const { rockets, fetchRockets, createRocket, updateRocket, deleteRocket } = useRocket();
+  const { rockets, fetchRockets, createRocket, updateRocket, deleteRocket } =
+    useRocket();
   const [formData, setFormData] = useState<RocketDTO>();
-
 
   useEffect(() => {
     fetchRockets();
-  }, []);
+  }, [fetchRockets]);
 
   useEffect(() => {
     console.log('-> ', rockets);
@@ -76,7 +74,7 @@ const Rocket = () => {
 
       <main style={theme.containerContentPage as React.CSSProperties}>
         <div style={theme.divContent as React.CSSProperties}>
-          {rockets.map(item => {
+          {rockets.map((item) => {
             return (
               <CardContent
                 key={item.id}
@@ -93,7 +91,6 @@ const Rocket = () => {
           handleClickDelete={handleDeleteRocket}
         />
 
-
         <Modal
           title={modalTitle}
           open={isModalOpen}
@@ -107,12 +104,9 @@ const Rocket = () => {
               handleOperationRocket={handleUpdateRocket}
             />
           ) : (
-            <FormRocket
-              handleOperationRocket={handleCreateRocket}
-            />
+            <FormRocket handleOperationRocket={handleCreateRocket} />
           )}
         </Modal>
-
       </main>
       <Footer />
     </div>

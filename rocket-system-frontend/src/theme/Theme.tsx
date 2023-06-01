@@ -61,7 +61,7 @@ const theme = {
     margin: '5px 1px',
     flexWrap: 'wrap',
     textAlign: 'center',
-    flex: '1'
+    flex: '1',
   },
   containerContentPage: {
     fontSize: '20px',
@@ -89,7 +89,7 @@ const theme = {
     padding: '0px 5px',
     borderRadius: '4px',
     boxShadow: '2px 2px 4px rgba(0, 0, 0, 0.2)',
-    color: '#fff'
+    color: '#fff',
   },
   flexItemCrew: {
     display: 'flex',
@@ -101,7 +101,7 @@ const theme = {
     borderRadius: '4px',
     boxShadow: '2px 2px 4px rgba(0, 0, 0, 0.2)',
     background: 'linear-gradient(to right, #613dc1, #97dffc, #613dc1)',
-    color: '#fff'
+    color: '#fff',
   },
   flexItemTitle: {
     marginTop: '2px',
@@ -127,8 +127,7 @@ const theme = {
   },
   divBtn: {
     marginTop: 'auto',
-    paddingBotton: '10px'
-
+    paddingBotton: '10px',
   },
   btn: {
     fontSize: '16px',

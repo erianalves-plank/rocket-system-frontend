@@ -32,7 +32,7 @@ const FormCrew: React.FC<CrewFormData> = ({
 
   useEffect(() => {
     if (crew) {
-      setCrewmenList(crew.crewmen.map(obj => obj.name));
+      setCrewmenList(crew.crewmen.map((obj) => obj.name));
       form.setFieldsValue(crew);
     } else {
       form.resetFields();

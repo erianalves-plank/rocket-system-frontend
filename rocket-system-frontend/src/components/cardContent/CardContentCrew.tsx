@@ -16,7 +16,7 @@ const CardContentCrew: React.FC<DataCrew> = ({ name, crewmen, onClick }) => {
     onClick();
   };
 
-  const crewmenSection = crewmen.map(item => {
+  const crewmenSection = crewmen.map((item) => {
     const crewmanInfo = (
       <React.Fragment key={item.id}>
         <p style={{ margin: 0, paddingLeft: '4px' }}>

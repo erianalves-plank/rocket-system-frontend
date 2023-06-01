@@ -22,7 +22,6 @@ const FormRocket: React.FC<RocketFormData> = ({
   const [form] = Form.useForm();
 
   useEffect(() => {
-
     if (rocket) form.setFieldsValue(rocket);
     else form.resetFields();
   }, [rocket, form]);
@@ -32,7 +31,6 @@ const FormRocket: React.FC<RocketFormData> = ({
   };
 
   return (
-
     <Form
       form={form}
       name="basic"
@@ -57,7 +55,6 @@ const FormRocket: React.FC<RocketFormData> = ({
         </Button>
       </Form.Item>
     </Form>
-
   );
 };
 

@@ -16,14 +16,13 @@ const Crewman = () => {
   const [modalTitle, setModalTitle] = useState('');
   const [sendDataForm, setSendDataForm] = useState(false);
   const [crewmanSelected, setCrewmanSelected] = useState('');
-  const { crewmen, fetchCrewmen, createCrewman, updateCrewman, deleteCrewman  } = useCrewman();
+  const { crewmen, fetchCrewmen, createCrewman, updateCrewman, deleteCrewman } =
+    useCrewman();
   const [formData, setFormData] = useState<CrewmanDTO>();
-
-
 
   useEffect(() => {
     fetchCrewmen();
-  }, []);
+  }, [fetchCrewmen]);
 
   useEffect(() => {
     console.log('-> ', crewmen);
@@ -75,7 +74,7 @@ const Crewman = () => {
       <NavbarContentPages entityType="crewman" />
       <main style={theme.containerContentPage as React.CSSProperties}>
         <div style={theme.divContent as React.CSSProperties}>
-          {crewmen.map(item => {
+          {crewmen.map((item) => {
             return (
               <CardContentCrewman
                 key={item.id}

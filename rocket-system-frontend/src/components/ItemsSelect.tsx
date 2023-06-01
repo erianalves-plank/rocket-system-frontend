@@ -17,7 +17,7 @@ const ItemsSelected: React.FC<PropsComponent> = ({
   useEffect(() => {
     console.log('Selected Items:', selectedItems);
   }, [selectedItems]);
-  const filteredOptions = options.filter(o => !selectedItems.includes(o));
+  const filteredOptions = options.filter((o) => !selectedItems.includes(o));
 
   /*   console.log('Options:', options);
     console.log('Filtered Options:', filteredOptions); */
@@ -35,7 +35,7 @@ const ItemsSelected: React.FC<PropsComponent> = ({
       value={selectedItems}
       onChange={handleChange}
       style={{ width: '100%' }}
-      options={filteredOptions.map(item => ({
+      options={filteredOptions.map((item) => ({
         value: item,
         label: item,
       }))}
