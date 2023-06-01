@@ -19,10 +19,11 @@ const Crewman = () => {
   const { crewmen, fetchCrewmen, createCrewman, updateCrewman, deleteCrewman } =
     useCrewman();
   const [formData, setFormData] = useState<CrewmanDTO>();
+  const [changedCrewman, setChangedCrewman] = useState<boolean>(false);
 
   useEffect(() => {
     fetchCrewmen();
-  }, [fetchCrewmen]);
+  }, [changedCrewman]);
 
   useEffect(() => {
     console.log('-> ', crewmen);
@@ -51,21 +52,24 @@ const Crewman = () => {
     setFormData(crewman);
   };
 
-  const handleDeleteCrewman = () => {
+  const handleDeleteCrewman = async () => {
     const crewmanId = crewmanSelected;
-    deleteCrewman(crewmanId);
+    await deleteCrewman(crewmanId);
+    setChangedCrewman(!changedCrewman);
     setCrewmanSelected('');
     return crewmanId;
   };
 
-  const handleCreateCrewman = (crewman: Partial<CrewmanDTO>) => {
-    createCrewman(crewman);
+  const handleCreateCrewman = async (crewman: Partial<CrewmanDTO>) => {
+    await createCrewman(crewman);
+    setChangedCrewman(!changedCrewman);
     setIsModalOpen(false);
   };
 
-  const handleUpdateCrewman = (crewman: Partial<CrewmanDTO>) => {
+  const handleUpdateCrewman = async (crewman: Partial<CrewmanDTO>) => {
     const crewmanId = crewmanSelected;
-    updateCrewman(crewmanId, crewman);
+    await updateCrewman(crewmanId, crewman);
+    setChangedCrewman(!changedCrewman);
     setIsModalOpen(false);
   };
 

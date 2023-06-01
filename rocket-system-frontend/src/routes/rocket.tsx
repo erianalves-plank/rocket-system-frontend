@@ -20,14 +20,15 @@ const Rocket = () => {
   const { rockets, fetchRockets, createRocket, updateRocket, deleteRocket } =
     useRocket();
   const [formData, setFormData] = useState<RocketDTO>();
-
-  useEffect(() => {
-    fetchRockets();
-  }, [fetchRockets]);
-
+  const [changedRocket, setChangedRocket] = useState<boolean>(false);
+  
   useEffect(() => {
     console.log('-> ', rockets);
   }, [rockets]);
+  
+  useEffect(() => {
+    fetchRockets();
+  }, [changedRocket]);//watches for changes 
 
   const handleOpenModal = (operation: string) => {
     if (operation === 'Edit' && rocketSelected === '') return;
@@ -50,30 +51,33 @@ const Rocket = () => {
     console.log(`Card with ID ${rocket.id} clicked`);
   };
 
-  const handleDeleteRocket = () => {
+  const handleDeleteRocket = async () => {
     const rocketId = rocketSelected;
     setRocketSelected('');
-    deleteRocket(rocketId);
+    await deleteRocket(rocketId);
+    setChangedRocket(!changedRocket);
     return rocketId;
   };
 
-  const handleCreateRocket = (rocket: Partial<RocketDTO>) => {
-    createRocket(rocket);
+  const handleCreateRocket = async (rocket: Partial<RocketDTO>) => {
+    await createRocket(rocket);
+    setChangedRocket(!changedRocket);
     setIsModalOpen(false);
   };
 
-  const handleUpdateRocket = (rocket: Partial<RocketDTO>) => {
+  const handleUpdateRocket = async (rocket: Partial<RocketDTO>) => {
     const rocketId = rocketSelected;
-    updateRocket(rocketId, rocket);
+    await updateRocket(rocketId, rocket);
+    setChangedRocket(!changedRocket);
     setIsModalOpen(false);
   };
 
   return (
-    <div style={theme.layoutContentPage as React.CSSProperties}>
+    <div style={theme.layoutContentPage as React.CSSProperties} data-cy='rocket-page'>
       <NavbarContentPages entityType="rocket" />
 
       <main style={theme.containerContentPage as React.CSSProperties}>
-        <div style={theme.divContent as React.CSSProperties}>
+        <div style={theme.divContent as React.CSSProperties} data-cy='div-content-rocket'>
           {rockets.map((item) => {
             return (
               <CardContent

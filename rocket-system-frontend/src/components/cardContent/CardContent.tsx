@@ -6,7 +6,7 @@ export interface DataRocket {
   name: string;
   onClick: () => void;
 }
-const CardContent: React.FC<DataRocket> = ({ name, onClick }) => {
+const CardContent: React.FC<DataRocket> = ({ id, name, onClick }) => {
   const theme = useContext(ThemeContext);
 
   const handleClick = () => {
@@ -16,7 +16,7 @@ const CardContent: React.FC<DataRocket> = ({ name, onClick }) => {
   return (
     <div
       style={theme.flexItemCrew as React.CSSProperties}
-      onClick={handleClick}
+      onClick={handleClick} data-cy={`card-content-rocket-${id}`}
     >
       <h4 style={theme.flexItemTitle}>Technical Information</h4>
       <div style={{ paddingLeft: '15px' }}>

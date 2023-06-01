@@ -25,11 +25,11 @@ const ButtonsManageResource: React.FC<ChildComponentProps> = ({
 
   return (
     <div style={theme.divBtn}>
-      <Button style={theme.btn} size="large" onClick={handleClickAddButton}>
+      <Button style={theme.btn} size="large" onClick={handleClickAddButton} data-cy={`button-add-rocket`}>
         Add
       </Button>
 
-      <Button style={theme.btn} size="large" onClick={handleClickEditButton}>
+      <Button style={theme.btn} size="large" onClick={handleClickEditButton} data-cy={`button-edit-rocket`}>
         Edit
       </Button>
 
@@ -38,7 +38,7 @@ const ButtonsManageResource: React.FC<ChildComponentProps> = ({
         size="large"
         onClick={handleClickDeleteButton}
         danger
-      >
+        data-cy={`button-delete-rocket`}>
         Delete
       </Button>
     </div>

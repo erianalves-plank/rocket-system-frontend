@@ -4,11 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json|tsx|jsx)\""
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json|tsx|jsx)\"",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run"
   },
   "dependencies": {
     "@ant-design/icons": "^5.1.0",
@@ -17,6 +19,7 @@
     "@mui/material": "^5.13.1",
     "antd": "^5.5.0",
     "axios": "^1.4.0",
+    "cypress": "^12.13.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.11.2"

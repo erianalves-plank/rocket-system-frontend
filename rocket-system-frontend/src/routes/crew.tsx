@@ -19,12 +19,13 @@ function Crew() {
   const [crewSelected, setCrewSelected] = useState('');
   const { crews, crewmenDB, fetchCrews, createCrew, updateCrew, deleteCrew } =
     useCrew();
+  const [changedCrew, setChangedCrew] = useState<boolean>(false);
 
   const [formData, setFormData] = useState<CrewDTO>();
 
   useEffect(() => {
     fetchCrews();
-  }, [fetchCrews]);
+  }, [changedCrew]);
 
   useEffect(() => {
     console.log('-> ', crews);
@@ -54,20 +55,23 @@ function Crew() {
     setFormData(crew);
   };
 
-  const handleDeleteCrew = () => {
+  const handleDeleteCrew = async () => {
     const crewId = crewSelected;
-    deleteCrew(crewSelected);
+    await deleteCrew(crewSelected);
+    setChangedCrew(!changedCrew);
     setCrewSelected('');
     return crewId;
   };
-  const handleCreateCrew = (crew: Partial<CrewDTO>, crewmenNames: string[]) => {
-    createCrew(crew, crewmenNames);
+  const handleCreateCrew = async (crew: Partial<CrewDTO>, crewmenNames: string[]) => {
+    await createCrew(crew, crewmenNames);
+    setChangedCrew(!changedCrew);
     setIsModalOpen(false);
   };
 
-  const handleUpdateCrew = (crew: Partial<CrewDTO>, crewmenNames: string[]) => {
+  const handleUpdateCrew = async (crew: Partial<CrewDTO>, crewmenNames: string[]) => {
     const crewId = crewSelected;
-    updateCrew(crewId, crew, crewmenNames);
+    await updateCrew(crewId, crew, crewmenNames);
+    setChangedCrew(!changedCrew);
     setIsModalOpen(false);
   };
 

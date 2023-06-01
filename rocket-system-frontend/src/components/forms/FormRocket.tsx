@@ -46,11 +46,11 @@ const FormRocket: React.FC<RocketFormData> = ({
         name="name"
         rules={[{ required: true, message: 'Please input the rocket name!' }]}
       >
-        <Input />
+        <Input data-cy={`name-field-rocket`}/>
       </Form.Item>
 
       <Form.Item wrapperCol={{ offset: 8, span: 8 }}>
-        <Button type="primary" htmlType="submit">
+        <Button type="primary" htmlType="submit" data-cy={`submit-button-rocket`}>
           Submit
         </Button>
       </Form.Item>

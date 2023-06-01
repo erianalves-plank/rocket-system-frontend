@@ -12,6 +12,7 @@ export interface DataMainPage {
 }
 
 const CardMainPage: React.FC<DataMainPage> = ({
+  id,
   name,
   img,
   description,
@@ -20,7 +21,7 @@ const CardMainPage: React.FC<DataMainPage> = ({
   const theme = useContext(ThemeContext);
 
   return (
-    <div style={theme.flexItem as React.CSSProperties}>
+    <div style={theme.flexItem as React.CSSProperties} data-cy={`card-main-page-${id}`}>
       <h2>{name}</h2>
       <img src={img} alt="" style={theme.imgFrontPage} />
       <p>

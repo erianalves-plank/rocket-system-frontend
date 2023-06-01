@@ -18,12 +18,13 @@ const Launch = () => {
   const [launchSelected, setLaunchSelected] = useState('');
   const { launches, fetchLaunches, createLaunch, updateLaunch, deleteLaunch } =
     useLaunch();
+    const [changedLaunch, setChangedLaunch] = useState<boolean>(false);
 
   const [formData, setFormData] = useState<LaunchDTO>();
 
   useEffect(() => {
     fetchLaunches();
-  }, [fetchLaunches]);
+  }, [changedLaunch]);
 
   useEffect(() => {
     console.log('-> ', launches);
@@ -54,29 +55,32 @@ const Launch = () => {
     console.log(`Card with ID ${launch.id} clicked`);
   };
 
-  const handleDeleteLaunch = () => {
+  const handleDeleteLaunch = async () => {
     const launchId = launchSelected;
-    deleteLaunch(launchId);
+    await deleteLaunch(launchId);
+    setChangedLaunch(!changedLaunch);
     setLaunchSelected('');
     return launchId;
   };
 
-  const handleCreateLaunch = (
+  const handleCreateLaunch = async (
     launch: Partial<LaunchDTO>,
     rocketName: string,
     crewName: string
   ) => {
-    createLaunch(launch, rocketName, crewName);
+    await createLaunch(launch, rocketName, crewName);
+    setChangedLaunch(!changedLaunch);
     setIsModalOpen(false);
   };
 
-  const handleUpdateLaunch = (
+  const handleUpdateLaunch = async (
     launch: Partial<LaunchDTO>,
     rocketName: string,
     crewName: string
   ) => {
     const launchId = launchSelected;
-    updateLaunch(launchId, launch, rocketName, crewName);
+    await updateLaunch(launchId, launch, rocketName, crewName);
+    setChangedLaunch(!changedLaunch);
     setIsModalOpen(false);
   };
 

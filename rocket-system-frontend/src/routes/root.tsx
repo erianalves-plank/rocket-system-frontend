@@ -9,7 +9,7 @@ import { ThemeContext } from '../theme/ThemeContext.tsx';
 const Root = () => {
   const cardsMainPage = data.map((item) => {
     return (
-      <CardMainPage
+      <CardMainPage 
         key={item.id}
         id={item.id}
         name={item.name}
