@@ -40,7 +40,6 @@ const FormCrew: React.FC<CrewFormData> = ({
     }
   }, [crew, form]);
   const dataSubmitted = (values: Partial<CrewDTO>) => {
-    console.log('values ', values, ' -> ', crewmenSelected);
     handleOperationCrew(values, crewmenSelected);
   };
   return (
@@ -59,21 +58,23 @@ const FormCrew: React.FC<CrewFormData> = ({
         name="name"
         rules={[{ required: true, message: 'Please input the Crew name!' }]}
       >
-        <Input />
+        <Input data-cy='name-field-crew' />
       </Form.Item>
       <Form.Item
         label="Crewmen"
-        rules={[{ required: true, message: 'Please input the Crew name!' }]}
+        rules={[{ required: true }]}
+        data-cy="form-item-crewmen"
       >
         <ItemsSelected
           options={crewmenDB}
           itemsAlreadySelected={crewmenList}
           handleReturnSelectedValues={getSelectedItems}
+          data-cy='form-item-crew-select'
         />
       </Form.Item>
 
       <Form.Item wrapperCol={{ offset: 8, span: 8 }}>
-        <Button type="primary" htmlType="submit">
+        <Button type="primary" htmlType="submit" data-cy='submit-form-crew'>
           Submit
         </Button>
       </Form.Item>

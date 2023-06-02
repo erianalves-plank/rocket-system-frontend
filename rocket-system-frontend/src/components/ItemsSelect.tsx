@@ -30,6 +30,7 @@ const ItemsSelected: React.FC<PropsComponent> = ({
 
   return (
     <Select
+      data-cy='select-item'
       mode="multiple"
       placeholder="Select the crewmen for the crew"
       value={selectedItems}

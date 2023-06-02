@@ -22,11 +22,11 @@ const CardMainPage: React.FC<DataMainPage> = ({
 
   return (
     <div style={theme.flexItem as React.CSSProperties} data-cy={`card-main-page-${id}`}>
-      <h2>{name}</h2>
-      <img src={img} alt="" style={theme.imgFrontPage} />
-      <p>
+      <h2 data-cy='card-main-page-title'> {name}</h2>
+      <img data-cy='card-main-page-image' src={img} alt="" style={theme.imgFrontPage} />
+      <p data-cy='card-main-page-paragraph'>
         {description}
-        <Link to={redirect}>Check More</Link>{' '}
+        <Link data-cy='link-tag' to={redirect}>Check More</Link>
       </p>
     </div>
   );

@@ -7,6 +7,14 @@ import data from '../mockedData/dataMainPage.tsx';
 import { ThemeContext } from '../theme/ThemeContext.tsx';
 
 const Root = () => {
+  const theme = useContext(ThemeContext);
+
+  const outerDivStyle = {
+    background: theme.colors.primary,
+    minHeight: theme.layout.minHeight,
+    display: theme.layout.display,
+    flexDirection: theme.layout.flexDirection,
+  };
   const cardsMainPage = data.map((item) => {
     return (
       <CardMainPage 
@@ -19,14 +27,6 @@ const Root = () => {
       />
     );
   });
-  const theme = useContext(ThemeContext);
-
-  const outerDivStyle = {
-    background: theme.colors.primary,
-    minHeight: theme.layout.minHeight,
-    display: theme.layout.display,
-    flexDirection: theme.layout.flexDirection,
-  };
 
   return (
     <div style={outerDivStyle}>
