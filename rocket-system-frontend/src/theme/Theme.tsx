@@ -140,6 +140,9 @@ const theme = {
     margin: 'auto 15px 10px 15px',
     width: '100px',
   },
+  layoutItemContent: {
+    paddingLeft: '15px',
+  }
 };
 
 export default theme;

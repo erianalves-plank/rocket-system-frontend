@@ -1,6 +1,6 @@
 import { LeftCircleOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
-interface PropsType {
+export interface PropsType {
   entityType: string;
 }
 

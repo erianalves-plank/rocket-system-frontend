@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Select } from 'antd';
 
-type PropsComponent = {
+export type PropsComponent = {
   options: string[];
   itemsAlreadySelected?: string[];
   handleReturnSelectedValues: (valuesSelected: string[]) => void;
 };
 
-const ItemsSelected: React.FC<PropsComponent> = ({
+const ItemsSelect: React.FC<PropsComponent> = ({
   options,
   itemsAlreadySelected = [],
   handleReturnSelectedValues,
@@ -44,4 +44,4 @@ const ItemsSelected: React.FC<PropsComponent> = ({
   );
 };
 
-export default ItemsSelected;
+export {ItemsSelect};

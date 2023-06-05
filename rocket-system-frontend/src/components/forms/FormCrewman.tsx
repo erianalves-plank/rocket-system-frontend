@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Button, Form, Input } from 'antd';
 import { CrewmanDTO } from '../../dtos/CrewmanDTO';
 
-type CrewmanFormData = {
+export type CrewmanFormData = {
   crewman?: CrewmanDTO;
   handleOperationCrewman: (data: Partial<CrewmanDTO>) => void;
 };

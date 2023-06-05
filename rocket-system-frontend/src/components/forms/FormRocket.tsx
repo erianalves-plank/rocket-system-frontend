@@ -2,7 +2,7 @@ import { Button, Form, Input } from 'antd';
 import React, { useEffect } from 'react';
 import { RocketDTO } from '../../dtos/RocketDTO';
 
-type RocketFormData = {
+export type RocketFormData = {
   rocket?: RocketDTO;
   handleOperationRocket: (data: Partial<RocketDTO>) => void;
 };

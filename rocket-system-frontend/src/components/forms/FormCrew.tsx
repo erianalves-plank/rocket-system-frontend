@@ -1,9 +1,9 @@
 import { Button, Form, Input } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { CrewDTO } from '../../dtos/CrewDTO';
-import ItemsSelected from '../ItemsSelect';
+import {ItemsSelect} from '../ItemsSelect';
 
-type CrewFormData = {
+export type CrewFormData = {
   crew?: CrewDTO;
   crewmenDB: string[];
   handleOperationCrew: (data: Partial<CrewDTO>, crewmenNames: string[]) => void;
@@ -65,7 +65,7 @@ const FormCrew: React.FC<CrewFormData> = ({
         rules={[{ required: true }]}
         data-cy="form-item-crewmen"
       >
-        <ItemsSelected
+        <ItemsSelect
           options={crewmenDB}
           itemsAlreadySelected={crewmenList}
           handleReturnSelectedValues={getSelectedItems}
