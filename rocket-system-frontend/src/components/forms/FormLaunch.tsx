@@ -1,6 +1,7 @@
 import { Button, Form, Input, Switch } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { LaunchDTO } from '../../dtos/LaunchDTO';
+import { useTranslation } from 'react-i18next';
 
 export type LaunchFormData = {
   launch?: LaunchDTO;
@@ -32,6 +33,7 @@ const FormLaunch: React.FC<LaunchFormData> = ({
   launch,
   handleOperationLaunch,
 }) => {
+  const [t] = useTranslation();
   const [form] = Form.useForm();
 
   const [checked, setChecked] = useState(false);
@@ -75,7 +77,7 @@ const FormLaunch: React.FC<LaunchFormData> = ({
       autoComplete="off"
     >
       <Form.Item
-        label="Launch Code"
+        label={t('launch code')}
         name="launchCode"
         rules={[{ required: true, message: 'Please input the Launch Code!' }]}
       >
@@ -83,7 +85,7 @@ const FormLaunch: React.FC<LaunchFormData> = ({
       </Form.Item>
 
       <Form.Item
-        label="Date"
+        label={t('date')}
         name="date"
         rules={[{ required: true, message: 'Please input the Launch date!' }]}
       >
@@ -91,7 +93,7 @@ const FormLaunch: React.FC<LaunchFormData> = ({
       </Form.Item>
 
       <Form.Item
-        label="Rocket"
+        label={t('rocket')}
         name="rocketName"
         rules={[
           {
@@ -104,7 +106,7 @@ const FormLaunch: React.FC<LaunchFormData> = ({
       </Form.Item>
 
       <Form.Item
-        label="Success"
+        label={t('success')}
         rules={[
           {
             required: true,
@@ -121,7 +123,7 @@ const FormLaunch: React.FC<LaunchFormData> = ({
       </Form.Item>
 
       <Form.Item
-        label="Crew"
+        label={t('crew')}
         name="crewName"
         rules={[
           { required: false, message: 'Please input the crew for the launch!' },
@@ -132,7 +134,7 @@ const FormLaunch: React.FC<LaunchFormData> = ({
 
       <Form.Item wrapperCol={{ offset: 8, span: 8 }}>
         <Button type="primary" htmlType="submit">
-          Submit
+        {t('submit')}
         </Button>
       </Form.Item>
     </Form>

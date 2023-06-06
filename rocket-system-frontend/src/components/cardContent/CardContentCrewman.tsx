@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from '../../theme/ThemeContext';
+import { useTranslation } from 'react-i18next';
 
 export interface DataCrewman {
   id: string;
@@ -14,6 +15,7 @@ const CardContentCrewman: React.FC<DataCrewman> = ({
   onClick,
 }) => {
   const theme = useContext(ThemeContext);
+  const [t] = useTranslation();
 
   const handleClick = () => {
     onClick();
@@ -24,13 +26,13 @@ const CardContentCrewman: React.FC<DataCrewman> = ({
       style={theme.flexItemCrew as React.CSSProperties}
       onClick={handleClick}
     >
-      <h3 style={theme.flexItemTitle}>Technical Information</h3>
+      <h3 style={theme.flexItemTitle}>{t('technical information')}</h3>
       <div>
         <p style={{ margin: 0, paddingLeft: '4px' }}>
-          <strong>Name:</strong> {name}
+          <strong>{t('name')}:</strong> {name}
         </p>
         <p style={{ margin: 0, paddingLeft: '4px' }}>
-          <strong>Patent:</strong> {patent}
+          <strong>{t('patent')}:</strong> {patent}
         </p>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { CrewmanDTO } from '../../dtos/CrewmanDTO';
 import { ThemeContext } from '../../theme/ThemeContext';
+import { useTranslation } from 'react-i18next';
 
 export interface DataCrew {
   id: string;
@@ -11,6 +12,7 @@ export interface DataCrew {
 
 const CardContentCrew: React.FC<DataCrew> = ({ name, crewmen, onClick }) => {
   const theme = useContext(ThemeContext);
+  const [t] = useTranslation();
 
   const handleClick = () => {
     onClick();
@@ -20,10 +22,10 @@ const CardContentCrew: React.FC<DataCrew> = ({ name, crewmen, onClick }) => {
     const crewmanInfo = (
       <React.Fragment key={item.id}>
         <p style={{ margin: 0, paddingLeft: '4px' }}>
-          <strong>Name:</strong> {item.name}
+          <strong>{t('name')}:</strong> {item.name}
         </p>
         <p style={{ margin: '0 0 15px 0', paddingLeft: '4px' }}>
-          <strong>Patent:</strong> {item.patent}
+          <strong>{t('patent')}:</strong> {item.patent}
         </p>
       </React.Fragment>
     );
@@ -35,14 +37,14 @@ const CardContentCrew: React.FC<DataCrew> = ({ name, crewmen, onClick }) => {
       style={theme.flexItemCrew as React.CSSProperties}
       onClick={handleClick}
     >
-      <h3 style={theme.flexItemTitle}>Technical Information</h3>
+      <h3 style={theme.flexItemTitle}>{t('technical information')}</h3>
       <div>
         <p style={{ margin: 0, paddingLeft: '4px' }}>
-          <strong>Name:</strong> {name}
+          <strong>{t('name')}:</strong> {name}
         </p>
       </div>
       <div>
-        <h4 style={theme.flexItemSub_Title}>Crewmen</h4>
+        <h4 style={theme.flexItemSub_Title}>{t('crewmen')}</h4>
 
         <div>{crewmenSection}</div>
       </div>

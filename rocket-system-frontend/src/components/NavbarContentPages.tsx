@@ -1,10 +1,13 @@
 import { LeftCircleOutlined } from '@ant-design/icons';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 export interface PropsType {
   entityType: string;
 }
 
 const NavbarContentPages: React.FC<PropsType> = ({ entityType }) => {
+  const [t] = useTranslation();
+  const sectionName = entityType + ' section';
   return (
     <nav
       style={{
@@ -19,7 +22,8 @@ const NavbarContentPages: React.FC<PropsType> = ({ entityType }) => {
         <LeftCircleOutlined style={{ fontSize: '30px' }} />
       </Link>{' '}
       <li style={{ listStyle: 'none', fontSize: '25px', marginRight: '60px' }}>
-        {entityType[0].toUpperCase() + entityType.slice(1) + ' Section'}
+        {t(sectionName)}
+        {/* {entityType[0].toUpperCase() + entityType.slice(1) + ' Section'} */}
       </li>
     </nav>
   );

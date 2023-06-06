@@ -9,10 +9,11 @@ import { Modal } from 'antd';
 import { FormRocket } from '../components/forms/FormRocket.tsx';
 import { RocketDTO } from '../dtos/RocketDTO.tsx';
 import { useRocket } from '../hooks/useRocket.tsx';
+import { useTranslation } from 'react-i18next';
 
 const Rocket = () => {
   const theme = useContext(ThemeContext);
-
+  const [t] = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalTitle, setModalTitle] = useState('');
   const [sendDataForm, setSendDataForm] = useState(false);
@@ -32,8 +33,8 @@ const Rocket = () => {
 
   const handleOpenModal = (operation: string) => {
     if (operation === 'Edit' && rocketSelected === '') return;
-
-    setModalTitle(`${operation} a Rocket`);
+    const titleModal = t(operation) + ' ' + t('rocket');
+    setModalTitle(titleModal);
     setSendDataForm(() => {
       return operation === 'Edit' ? true : false;
     });

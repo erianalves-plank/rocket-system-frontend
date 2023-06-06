@@ -11,6 +11,8 @@ import { theme } from './theme/Theme.tsx';
 import { ThemeContext } from './theme/ThemeContext.tsx';
 import ErrorPage from './error-page.tsx';
 
+import './i18n/i18n'
+
 const router = createBrowserRouter([
   {
     path: '/',

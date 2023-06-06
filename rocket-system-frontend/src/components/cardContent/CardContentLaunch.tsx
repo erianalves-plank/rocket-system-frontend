@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { CrewDTO } from '../../dtos/CrewDTO.tsx';
 import { RocketDTO } from '../../dtos/RocketDTO.tsx';
 import { ThemeContext } from '../../theme/ThemeContext.tsx';
+import { useTranslation } from 'react-i18next';
 
 export interface DataLaunch {
   id: string;
@@ -22,6 +23,8 @@ const CardContentLaunch: React.FC<DataLaunch> = ({
   onClick,
 }) => {
   const theme = useContext(ThemeContext);
+  const [t] = useTranslation();
+
 
   /*   const crewmenSection = crew.crewmen.map(item => {
     const crewmanInfo = <>
@@ -53,36 +56,36 @@ const CardContentLaunch: React.FC<DataLaunch> = ({
           borderBottom: '4px solid #5e60ce',
         }}
       >
-        Technical Information
+        {t('technical information')}
       </h3>
       <div>
         <p style={{ margin: 0, paddingLeft: '4px' }}>
-          <strong>Launch Code:</strong> {launchCode}
+          <strong>{t('launch code')}:</strong> {launchCode}
         </p>
         <p style={{ margin: 0, paddingLeft: '4px' }}>
-          <strong>Date:</strong> {date}
+          <strong>{t('date')}:</strong> {date}
         </p>
         <p style={{ margin: 0, paddingLeft: '4px' }}>
-          <strong>Success:</strong> {infoSuccess}
+          <strong>{t('success')}:</strong> {infoSuccess}
         </p>
       </div>
       <div>
         <h4 style={{ marginTop: 0, marginBottom: '4px', paddingLeft: '4px' }}>
-          Rocket
+        {t('rocket')}
         </h4>
         <div>
           <p style={{ margin: 0, paddingLeft: '4px' }}>
-            <strong>Name:</strong> {rocket.name}
+            <strong>{t('name')}:</strong> {rocket.name}
           </p>
         </div>
         <h4
           style={{ marginTop: '5px', marginBottom: '2px', paddingLeft: '4px' }}
         >
-          Crew
+          {t('crew')}
         </h4>
         <div>
           <p style={{ margin: '0 0 10px 0', paddingLeft: '4px' }}>
-            <strong>Name:</strong> {crew.name}
+            <strong>{t('name')}:</strong> {crew.name}
           </p>
 
           {/*           <p style={{ marginTop: '5px', marginBottom: '2px', paddingLeft: '4px' }}>Crewmen</p>

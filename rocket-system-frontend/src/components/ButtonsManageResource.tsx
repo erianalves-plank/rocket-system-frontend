@@ -1,6 +1,7 @@
 import { Button } from 'antd';
 import { useContext } from 'react';
 import { ThemeContext } from '../theme/ThemeContext';
+import { useTranslation } from 'react-i18next';
 
 export interface ChildComponentProps {
   handleClick: (operation: string) => void;
@@ -12,6 +13,7 @@ const ButtonsManageResource: React.FC<ChildComponentProps> = ({
   handleClickDelete,
 }) => {
   const theme = useContext(ThemeContext);
+  const [t] = useTranslation();
 
   const handleClickAddButton = () => {
     handleClick('Add');
@@ -26,11 +28,11 @@ const ButtonsManageResource: React.FC<ChildComponentProps> = ({
   return (
     <div style={theme.divBtn}>
       <Button style={theme.btn} size="large" onClick={handleClickAddButton} data-cy={`button-add-rocket`}>
-        Add
+        {t('add')}
       </Button>
 
       <Button style={theme.btn} size="large" onClick={handleClickEditButton} data-cy={`button-edit-rocket`}>
-        Edit
+        {t('edit')}
       </Button>
 
       <Button
@@ -39,7 +41,7 @@ const ButtonsManageResource: React.FC<ChildComponentProps> = ({
         onClick={handleClickDeleteButton}
         danger
         data-cy={`button-delete-rocket`}>
-        Delete
+        {t('delete')}
       </Button>
     </div>
   );

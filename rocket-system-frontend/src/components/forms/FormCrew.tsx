@@ -2,6 +2,7 @@ import { Button, Form, Input } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { CrewDTO } from '../../dtos/CrewDTO';
 import {ItemsSelect} from '../ItemsSelect';
+import { useTranslation } from 'react-i18next';
 
 export type CrewFormData = {
   crew?: CrewDTO;
@@ -22,6 +23,8 @@ const FormCrew: React.FC<CrewFormData> = ({
   crewmenDB,
   handleOperationCrew,
 }) => {
+  const [t] = useTranslation();
+
   const [crewmenList, setCrewmenList] = useState<string[]>([]);
   const [crewmenSelected, setCrewmenSelected] = useState<string[]>([]);
   const [form] = Form.useForm();
@@ -54,14 +57,14 @@ const FormCrew: React.FC<CrewFormData> = ({
       autoComplete="off"
     >
       <Form.Item
-        label="Name"
+        label={t('name')}
         name="name"
         rules={[{ required: true, message: 'Please input the Crew name!' }]}
       >
         <Input data-cy='name-field-crew' />
       </Form.Item>
       <Form.Item
-        label="Crewmen"
+        label={t('crewmen')}
         rules={[{ required: true }]}
         data-cy="form-item-crewmen"
       >
@@ -75,7 +78,7 @@ const FormCrew: React.FC<CrewFormData> = ({
 
       <Form.Item wrapperCol={{ offset: 8, span: 8 }}>
         <Button type="primary" htmlType="submit" data-cy='submit-form-crew'>
-          Submit
+          {t('submit')}
         </Button>
       </Form.Item>
     </Form>

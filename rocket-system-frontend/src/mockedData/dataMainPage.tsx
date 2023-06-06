@@ -1,7 +1,7 @@
 export default [
   {
     id: 1,
-    name: 'Rocket',
+    name: 'rocket',
     img: '/imgs/rocket.png',
     description: `Cupcake ipsum dolor sit amet sweet I love halvah fruitcake. I love tiramisu jelly beans danish lollipop
         cotton candy soufflé cheesecake wafer. I love sugar plum chocolate cake muffin shortbread toffee wafer
@@ -10,7 +10,7 @@ export default [
   },
   {
     id: 2,
-    name: 'Crewman',
+    name: 'crewman',
     img: '/imgs/mission.png',
     description: `Cupcake ipsum dolor sit amet sweet I love halvah fruitcake. I love tiramisu jelly beans danish lollipop
         cotton candy soufflé cheesecake wafer. I love sugar plum chocolate cake muffin shortbread toffee wafer
@@ -19,7 +19,7 @@ export default [
   },
   {
     id: 3,
-    name: 'Crew',
+    name: 'crew',
     img: '/imgs/service.png',
     description: `Cupcake ipsum dolor sit amet sweet I love halvah fruitcake. I love tiramisu jelly beans danish lollipop
         cotton candy soufflé cheesecake wafer. I love sugar plum chocolate cake muffin shortbread toffee wafer
@@ -28,7 +28,7 @@ export default [
   },
   {
     id: 4,
-    name: 'Launch',
+    name: 'launch',
     img: '/imgs/rocket_launch.png',
     description: `Cupcake ipsum dolor sit amet sweet I love halvah fruitcake. I love tiramisu jelly beans danish lollipop
         cotton candy soufflé cheesecake wafer. I love sugar plum chocolate cake muffin shortbread toffee wafer

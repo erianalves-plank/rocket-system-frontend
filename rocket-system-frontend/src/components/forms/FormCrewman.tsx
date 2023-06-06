@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Button, Form, Input } from 'antd';
 import { CrewmanDTO } from '../../dtos/CrewmanDTO';
+import { useTranslation } from 'react-i18next';
 
 export type CrewmanFormData = {
   crewman?: CrewmanDTO;
@@ -19,6 +20,7 @@ const FormCrewman: React.FC<CrewmanFormData> = ({
   crewman,
   handleOperationCrewman,
 }) => {
+  const [t] = useTranslation();
   const [form] = Form.useForm();
   useEffect(() => {
     if (crewman) form.setFieldsValue(crewman);
@@ -40,14 +42,14 @@ const FormCrewman: React.FC<CrewmanFormData> = ({
       autoComplete="off"
     >
       <Form.Item
-        label="Name"
+        label={t('name')}
         name="name"
         rules={[{ required: true, message: 'Please input the Crewman name!' }]}
       >
         <Input />
       </Form.Item>
       <Form.Item
-        label="Patent"
+        label={t('patent')}
         name="patent"
         rules={[
           { required: true, message: 'Please input the Crewman patent!' },
@@ -58,7 +60,7 @@ const FormCrewman: React.FC<CrewmanFormData> = ({
 
       <Form.Item wrapperCol={{ offset: 8, span: 8 }}>
         <Button type="primary" htmlType="submit">
-          Submit
+        {t('submit')}
         </Button>
       </Form.Item>
     </Form>

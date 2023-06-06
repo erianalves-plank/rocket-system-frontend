@@ -8,10 +8,11 @@ import { FormLaunch } from '../components/forms/FormLaunch.tsx';
 import { LaunchDTO } from '../dtos/LaunchDTO.tsx';
 import { useLaunch } from '../hooks/useLaunch.tsx';
 import { ThemeContext } from '../theme/ThemeContext.tsx';
+import { useTranslation } from 'react-i18next';
 
 const Launch = () => {
   const theme = useContext(ThemeContext);
-
+  const [t] = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalTitle, setModalTitle] = useState('');
   const [sendDataForm, setSendDataForm] = useState(false);
@@ -33,7 +34,9 @@ const Launch = () => {
   const handleOpenModal = (operation: string) => {
     if (operation === 'Edit' && launchSelected === '') return;
 
-    setModalTitle(`${operation} a Launch`);
+    const titleModal = t(operation) + ' ' + t('launch');
+    setModalTitle(titleModal);
+
     setSendDataForm(() => {
       return operation === 'Edit' ? true : false;
     });

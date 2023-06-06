@@ -9,9 +9,12 @@ import '../css/Page.css';
 import { CrewDTO } from '../dtos/CrewDTO.tsx';
 import { useCrew } from '../hooks/useCrew.tsx';
 import { ThemeContext } from '../theme/ThemeContext.tsx';
+import { useTranslation } from 'react-i18next';
 
 function Crew() {
   const theme = useContext(ThemeContext);
+  const [t] = useTranslation();
+
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalTitle, setModalTitle] = useState('');
@@ -34,7 +37,9 @@ function Crew() {
   const handleOpenModal = (operation: string) => {
     if (operation === 'Edit' && crewSelected === '') return;
 
-    setModalTitle(`${operation} a Crew`);
+    const titleModal = t(operation) + ' ' + t('crew');
+    setModalTitle(titleModal);
+
     setSendDataForm(() => {
       return operation === 'Edit' ? true : false;
     });

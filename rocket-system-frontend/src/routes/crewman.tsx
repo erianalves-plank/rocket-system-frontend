@@ -1,5 +1,5 @@
 import { Modal } from 'antd';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState, useTransition } from 'react';
 import { ButtonsManageResource } from '../components/ButtonsManageResource';
 import { Footer } from '../components/Footer';
 import { NavbarContentPages } from '../components/NavbarContentPages';
@@ -8,9 +8,12 @@ import { FormCrewman } from '../components/forms/FormCrewman.tsx';
 import { CrewmanDTO } from '../dtos/CrewmanDTO.tsx';
 import { ThemeContext } from '../theme/ThemeContext.tsx';
 import { useCrewman } from '../hooks/useCrewman.tsx';
+import { useTranslation } from 'react-i18next';
 
 const Crewman = () => {
   const theme = useContext(ThemeContext);
+  const [t] = useTranslation();
+
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalTitle, setModalTitle] = useState('');
@@ -31,7 +34,10 @@ const Crewman = () => {
 
   const handleOpenModal = (operation: string) => {
     if (operation === 'Edit' && crewmanSelected === '') return;
-    setModalTitle(`${operation} a Crewman`);
+
+    const titleModal = t(operation) + ' ' + t('crewman');
+    setModalTitle(titleModal);
+
     setSendDataForm(() => {
       return operation === 'Edit' ? true : false;
     });
