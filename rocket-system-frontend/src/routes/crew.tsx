@@ -83,11 +83,11 @@ function Crew() {
   console.log('Checking the render');
 
   return (
-    <div style={theme.layoutContentPage as React.CSSProperties}>
+    <div style={theme.layoutContentPage as React.CSSProperties} data-cy='crew-page'>
       <NavbarContentPages entityType="crew" />
 
       <main style={theme.containerContentPage as React.CSSProperties}>
-        <div style={theme.divContent as React.CSSProperties}>
+        <div style={theme.divContent as React.CSSProperties} data-cy='div-content-crew'>
           {crews.map((item) => {
             return (
               <CardContentCrew

@@ -10,7 +10,7 @@ describe('My First Test', () => {
 
         cy.get('[data-cy="div-content-rocket"]').children().should('have.length', 12);
         
-        cy.get('[data-cy="button-add-rocket"]').click();
+        cy.get('[data-cy="button-add"]').click();
         
         cy.get('[data-cy="name-field-rocket"]').type(rocketName).should('have.value', rocketName);
         
@@ -33,7 +33,7 @@ describe('My First Test', () => {
         cy.get('[data-cy="rocket-page"]').find('p').contains(rocketName).should('exist');
         cy.get('[data-cy="rocket-page"]').find('p').contains(rocketName).click();
 
-        cy.get('[data-cy="button-edit-rocket"]').click();
+        cy.get('[data-cy="button-edit"]').click();
         
         cy.get('[data-cy="name-field-rocket"]').clear();
 
@@ -60,7 +60,7 @@ describe('My First Test', () => {
         cy.get('[data-cy="rocket-page"]').find('p').contains(rocketName).should('exist');
         cy.get('[data-cy="rocket-page"]').find('p').contains(rocketName).click();
 
-        cy.get('[data-cy="button-delete-rocket"]').click();
+        cy.get('[data-cy="button-delete"]').click();
 
         cy.get('[data-cy="div-content-rocket"]').children().should('have.length', 12);
         

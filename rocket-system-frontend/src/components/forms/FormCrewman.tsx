@@ -46,7 +46,7 @@ const FormCrewman: React.FC<CrewmanFormData> = ({
         name="name"
         rules={[{ required: true, message: 'Please input the Crewman name!' }]}
       >
-        <Input />
+        <Input data-cy={`name-field-crewman`}/>
       </Form.Item>
       <Form.Item
         label={t('patent')}
@@ -55,11 +55,11 @@ const FormCrewman: React.FC<CrewmanFormData> = ({
           { required: true, message: 'Please input the Crewman patent!' },
         ]}
       >
-        <Input />
+        <Input data-cy={`patent-field-crewman`}/>
       </Form.Item>
 
       <Form.Item wrapperCol={{ offset: 8, span: 8 }}>
-        <Button type="primary" htmlType="submit">
+        <Button type="primary" htmlType="submit" data-cy={`submit-button-crewman`}>
         {t('submit')}
         </Button>
       </Form.Item>

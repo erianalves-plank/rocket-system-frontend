@@ -10,6 +10,7 @@ export interface DataCrewman {
 }
 
 const CardContentCrewman: React.FC<DataCrewman> = ({
+  id,
   name,
   patent,
   onClick,
@@ -25,6 +26,7 @@ const CardContentCrewman: React.FC<DataCrewman> = ({
     <div
       style={theme.flexItemCrew as React.CSSProperties}
       onClick={handleClick}
+      data-cy={`card-content-crewman-${id}`}
     >
       <h3 style={theme.flexItemTitle}>{t('technical information')}</h3>
       <div>

@@ -80,10 +80,10 @@ const Crewman = () => {
   };
 
   return (
-    <div style={theme.layoutContentPage as React.CSSProperties}>
+    <div style={theme.layoutContentPage as React.CSSProperties} data-cy='crewman-page'>
       <NavbarContentPages entityType="crewman" />
       <main style={theme.containerContentPage as React.CSSProperties}>
-        <div style={theme.divContent as React.CSSProperties}>
+        <div style={theme.divContent as React.CSSProperties} data-cy='div-content-crewman'>
           {crewmen.map((item) => {
             return (
               <CardContentCrewman

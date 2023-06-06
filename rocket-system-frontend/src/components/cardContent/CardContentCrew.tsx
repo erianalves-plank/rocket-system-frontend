@@ -10,7 +10,7 @@ export interface DataCrew {
   onClick: () => void;
 }
 
-const CardContentCrew: React.FC<DataCrew> = ({ name, crewmen, onClick }) => {
+const CardContentCrew: React.FC<DataCrew> = ({ id, name, crewmen, onClick }) => {
   const theme = useContext(ThemeContext);
   const [t] = useTranslation();
 
@@ -36,6 +36,7 @@ const CardContentCrew: React.FC<DataCrew> = ({ name, crewmen, onClick }) => {
     <div
       style={theme.flexItemCrew as React.CSSProperties}
       onClick={handleClick}
+      data-cy={`card-content-crew-${id}`}
     >
       <h3 style={theme.flexItemTitle}>{t('technical information')}</h3>
       <div>

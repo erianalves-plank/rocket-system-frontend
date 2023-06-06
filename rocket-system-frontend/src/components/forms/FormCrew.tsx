@@ -77,7 +77,7 @@ const FormCrew: React.FC<CrewFormData> = ({
       </Form.Item>
 
       <Form.Item wrapperCol={{ offset: 8, span: 8 }}>
-        <Button type="primary" htmlType="submit" data-cy='submit-form-crew'>
+        <Button type="primary" htmlType="submit" data-cy='submit-button-crew'>
           {t('submit')}
         </Button>
       </Form.Item>
