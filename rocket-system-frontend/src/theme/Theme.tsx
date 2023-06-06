@@ -140,6 +140,17 @@ const theme = {
     margin: 'auto 15px 10px 15px',
     width: '100px',
   },
+  btnLanguages: {
+    fontSize: '16px',
+    fontWeight: '300',
+    padding: 'auto 10px',
+    border: '1px solid #b9faf8',
+    borderRadius: '5px',
+    background: '#4361ee',
+    color: 'white',
+    margin: 'auto 15px 10px 15px',
+    width: '50px',
+  },
   layoutItemContent: {
     paddingLeft: '15px',
   }

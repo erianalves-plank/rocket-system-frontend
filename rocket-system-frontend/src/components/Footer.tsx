@@ -19,8 +19,8 @@ const Footer = () => {
   return (
     <footer style={theme.footer}>
       <p> © 2023 All Mining Rocket, Inc.</p>
-      <Button onClick={handleChangeLanguage}>PT</Button>
-      <Button onClick={handleChangeLanguage}>EN</Button>
+      <Button style={theme.btnLanguages} onClick={handleChangeLanguage}>PT</Button>
+      <Button style={theme.btnLanguages} onClick={handleChangeLanguage}>EN</Button>
     </footer>
   );
 };
