@@ -7,6 +7,7 @@ const Footer = () => {
   const theme = useContext(ThemeContext);
 
   const [t, i18n] = useTranslation();
+  console.log(t);
   const { language, changeLanguage } = i18n;
 
   const handleChangeLanguage = () => {

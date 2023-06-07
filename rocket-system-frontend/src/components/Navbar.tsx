@@ -10,11 +10,11 @@ const Navbar = () => {
         height: '78px',
       }}
     >
-      <RocketOutlined style={{ fontSize: '48px', color: '#e0b1cb' }} />
+      <RocketOutlined data-testid="rocket-icon-left" style={{ fontSize: '48px', color: '#e0b1cb' }} />
       <li data-testid='navbar' style={{ listStyle: 'none', padding: '0 30px', fontSize: '30px' }}>
         Mining Rockets
       </li>
-      <RocketOutlined style={{ fontSize: '48px', color: '#e0b1cb' }} />
+      <RocketOutlined data-testid="rocket-icon-right" style={{ fontSize: '48px', color: '#e0b1cb' }} />
     </nav>
   );
 };

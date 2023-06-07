@@ -27,7 +27,7 @@ describe('CrewModal.cy.tsx', () => {
     cy.window().then((win) => {
       cy.stub(win.console, 'log').as('consoleLog');
   
-      cy.get('[data-cy=submit-form-crew]').click();
+      cy.get('[data-cy=submit-button-crew]').click();
   
       cy.get('@consoleLog').should('be.calledWith', 'All fields should be with imformation by now');
     });
