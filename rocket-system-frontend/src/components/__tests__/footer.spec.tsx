@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import '@testing-library/jest-dom/extend-expect';
 import { Footer } from '../Footer';
 
-describe("", () => {
+describe("Footer", () => {
     it("Rendering Footer and checking for texts", () => {
         render(<Footer/>);
 
