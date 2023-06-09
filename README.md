@@ -67,6 +67,8 @@
 </details>
 
 
+<div align="justify">
+<div>
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
@@ -83,11 +85,15 @@ A good view on the relationship of these elements can be observed on the schemat
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<div align="justify">
+<div>
+
+## Built With
+
+As mentioned above, this project is build with the latest technologies on the industry. The following list present the frameworks/libraries used:
 
 
-### Built With
-
-As mentioned above, this project is build with the latest technologies on the industry. The following list present the frameworks/libraries used 
+<div align="left">
 
 * [![Vite][Vite.js]][Vite-url]
 * [![React][React.js]][React-url]
@@ -99,6 +105,7 @@ As mentioned above, this project is build with the latest technologies on the in
 * [![i18next][i18next]][i18next-url]
 * [![Axios][Axios]][Axios-url]
 * [![AntDesign][AntDesign]][AntDesign-url]
+</div>
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -161,6 +168,8 @@ The next section breaks step to step on how to set up the project locally.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
+<div align="justify">
+<div>
 
 <!-- ROADMAP -->
 ## Roadmap
@@ -169,7 +178,7 @@ The next section breaks step to step on how to set up the project locally.
 - [ ] Change connection to production backend
 - [ ] Deploy to vercel
 - [ ] Multi-language Support
-    - [ ] Spanish
+- [ ] Spanish
 
 See the [open issues](https://github.com/erianalves-plank/rocket-system-frontend/issues) for a full list of proposed features (and known issues).
 
@@ -190,20 +199,6 @@ Project Link: [https://github.com/erianalves-plank/rocket-system-frontend](https
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png
-
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
 [Vite.js]: https://img.shields.io/badge/Vite.js-000000?style=for-the-badge&amp;logo=vite&amp;logoColor=white

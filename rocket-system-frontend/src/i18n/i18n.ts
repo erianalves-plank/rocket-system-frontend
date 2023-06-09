@@ -15,3 +15,5 @@ i18n.use(initReactI18next).init({
     },
     lng: 'en',
 })
+
+export { i18n };
